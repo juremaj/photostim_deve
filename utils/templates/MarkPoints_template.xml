@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PVMarkPointSeriesElements Iterations="1" IterationDelay="0.00" CalcFunctMap="False">
+  <PVMarkPointElement Repetitions="40" UncagingLaser="Uncaging" UncagingLaserPower="1000" TriggerFrequency="None" TriggerSelection="None" TriggerCount="1" AsyncSyncFrequency="None" VoltageOutputCategoryName="None" VoltageRecCategoryName="None" parameterSet="CurrentSettings">
+    <PVGalvoPointElement InitialDelay="60000" InterPointDelay="950" Duration="50" SpiralRevolutions="7" AllPointsAtOnce="False" Use3D="False" Points="Group 1" Indices="1-4">
+      <Point Index="1" X="0.595935912465807" Y="0.779601406799531" IsSpiral="True" SpiralWidth="0.0199325637636341" SpiralHeight="0.0199325637636341" SpiralSizeInMicrons="15.0000000000001" />
+      <Point Index="2" X="0.625244236029699" Y="0.704181320828449" IsSpiral="True" SpiralWidth="0.0199325637636341" SpiralHeight="0.0199325637636341" SpiralSizeInMicrons="15.0000000000001" />
+      <Point Index="3" X="0.71473231731145" Y="0.741695974990231" IsSpiral="True" SpiralWidth="0.0199325637636341" SpiralHeight="0.0199325637636341" SpiralSizeInMicrons="15.0000000000001" />
+      <Point Index="4" X="0.753810082063306" Y="0.758890191481047" IsSpiral="True" SpiralWidth="0.0199325637636341" SpiralHeight="0.0199325637636341" SpiralSizeInMicrons="15.0000000000001" />
+    </PVGalvoPointElement>
+  </PVMarkPointElement>
+</PVMarkPointSeriesElements>

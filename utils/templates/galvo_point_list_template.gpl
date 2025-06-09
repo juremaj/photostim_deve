@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PVGalvoPointList>
+  <PVGalvoPoint X="-2.7582465273251" Y="-3.09924006097119" Name="Point 1" Index="0" ActivityType="MarkPoints" UncagingLaser="Uncaging" UncagingLaserPower="0" Duration="100" IsSpiral="False" SpiralSize="3" SpiralRevolutions="5" Z="807.424999999999" />
+  <PVGalvoPoint X="2.79639654844993" Y="-3.09924006097119" Name="Point 2" Index="1" ActivityType="MarkPoints" UncagingLaser="Uncaging" UncagingLaserPower="0" Duration="100" IsSpiral="False" SpiralSize="3" SpiralRevolutions="5" Z="807.424999999999" />
+  <PVGalvoPoint X="-2.78113654" Y="3.09924006097119" Name="Point 3" Index="2" ActivityType="MarkPoints" UncagingLaser="Uncaging" UncagingLaserPower="0" Duration="100" IsSpiral="False" SpiralSize="3" SpiralRevolutions="5" Z="807.424999999999" />
+  <PVGalvoPoint X="2.79639654844993" Y="3.09924006097119" Name="Point 4" Index="3" ActivityType="MarkPoints" UncagingLaser="Uncaging" UncagingLaserPower="0" Duration="100" IsSpiral="False" SpiralSize="3" SpiralRevolutions="5" Z="807.424999999999" />
+  <PVGalvoPointGroup Indices="0,1,2,3" Name="Group 1" Index="4" ActivityType="MarkPoints" UncagingLaser="Uncaging" UncagingLaserPower="0" Duration="100" IsSpiral="False" SpiralSize="3" SpiralRevolutions="5" Z="807.424999999999" />
+</PVGalvoPointList>

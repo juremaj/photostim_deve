@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PVGalvoPointList>
+  <PVGalvoPoint X="-2.68957648930041" Y="-3.01444553125926" Name="Point 1" Index="0" ActivityType="MarkPoints" UncagingLaser="Uncaging" UncagingLaserPower="0" Duration="100" IsSpiral="True" SpiralSize="0.110870362837845" SpiralRevolutions="5" Z="807.424999999999" />
+  <PVGalvoPoint X="-0.278495154211248" Y="-3.00596607828807" Name="Point 2" Index="1" ActivityType="MarkPoints" UncagingLaser="Uncaging" UncagingLaserPower="0" Duration="100" IsSpiral="True" SpiralSize="0.110870362837845" SpiralRevolutions="5" Z="807.424999999999" />
+  <PVGalvoPoint X="2.72772651042524" Y="-3.02292498423045" Name="Point 3" Index="2" ActivityType="MarkPoints" UncagingLaser="Uncaging" UncagingLaserPower="0" Duration="100" IsSpiral="True" SpiralSize="0.110870362837845" SpiralRevolutions="5" Z="807.424999999999" />
+  <PVGalvoPoint X="-2.68194648507545" Y="-0.250143862650206" Name="Point 4" Index="3" ActivityType="MarkPoints" UncagingLaser="Uncaging" UncagingLaserPower="0" Duration="100" IsSpiral="True" SpiralSize="0.110870362837845" SpiralRevolutions="5" Z="807.424999999999" />
+  <PVGalvoPoint X="0.0419650232373113" Y="-0.131431521053498" Name="Point 5" Index="4" ActivityType="MarkPoints" UncagingLaser="Uncaging" UncagingLaserPower="0" Duration="100" IsSpiral="True" SpiralSize="0.110870362837845" SpiralRevolutions="5" Z="807.424999999999" />
+  <PVGalvoPoint X="2.77350653577503" Y="-0.0975137091687243" Name="Point 6" Index="5" ActivityType="MarkPoints" UncagingLaser="Uncaging" UncagingLaserPower="0" Duration="100" IsSpiral="True" SpiralSize="0.110870362837845" SpiralRevolutions="5" Z="807.424999999999" />
+  <PVGalvoPoint X="-2.75061652310014" Y="3.03988389017284" Name="Point 7" Index="6" ActivityType="MarkPoints" UncagingLaser="Uncaging" UncagingLaserPower="0" Duration="100" IsSpiral="True" SpiralSize="0.110870362837845" SpiralRevolutions="5" Z="807.424999999999" />
+  <PVGalvoPoint X="0.118265065486968" Y="3.02292498423045" Name="Point 8" Index="7" ActivityType="MarkPoints" UncagingLaser="Uncaging" UncagingLaserPower="0" Duration="100" IsSpiral="True" SpiralSize="0.110870362837845" SpiralRevolutions="5" Z="807.424999999999" />
+  <PVGalvoPoint X="2.75061652310014" Y="3.06532224908642" Name="Point 9" Index="8" ActivityType="MarkPoints" UncagingLaser="Uncaging" UncagingLaserPower="0" Duration="100" IsSpiral="True" SpiralSize="0.110870362837845" SpiralRevolutions="5" Z="807.424999999999" />
+  <PVGalvoPointGroup Indices="0,1,2,3,4,5,6,7,8" Name="Group 1" Index="9" ActivityType="MarkPoints" UncagingLaser="Uncaging" UncagingLaserPower="0" Duration="100" IsSpiral="True" SpiralSize="0.110870362837845" SpiralRevolutions="5" Z="807.424999999999" />
+</PVGalvoPointList>

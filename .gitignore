@@ -1,3 +1,9 @@
+# exports for microscope (MarkPoints, selected cells in FOV etc.)
+/export
+
+#DS_Store
+.DS_Store
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -172,3 +178,5 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+.DS_Store
+.gitignore
