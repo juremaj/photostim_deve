@@ -9,9 +9,13 @@ Goal: Stimulate the programmaticaly selected targets (see: [target_select](docs/
 3) Set up the stimulation laser / path correctly(see [calibrate](docs/protocols/calibrate.md) for more detail):
 
     a) ETL should be at -8 to be aligned to the imaging
+
     b) IR shutter should be open
+
     c) Brainbow dicroic should be out and replaced with the photostim filter (top of microscope)
+
     d) Power should be set accordingly at the polariser (see table below, for now I was using 3 - 53 mW)
+    
 
 Stim power calibration (22. 4. 2025):
 

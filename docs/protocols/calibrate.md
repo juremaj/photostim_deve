@@ -66,5 +66,7 @@ Materials: a cover slip with a thin layer of a dried fluorescent marker on one s
 9) If you don't see any burning the most likely reasons are:
 
     a) Not setting the ETL to -8
+
     b) IR shutter is closed
+    
     c) Polariser controlling the laser power is set too low (should be 6 - 140 mW for this protocol)

@@ -16,8 +16,11 @@ Goal: Use functional imaging to detect possible targets that can be used for pho
 3) This script will generate an `export/*subject*` folder in the root of `photostim_deve` where it will save the output files used to communicate to the microscope where to stimulate to target the chosen cells. This folder contains:
 
     a) `galvo_point_list_*subject*.gpl` (most important file that can be loaded directly in the prairie view GUI allowing the microscope to automatically generate the spirals centered on selected cells)
+
     b) `MarkPoints_*subject*.xml` (this is mostly obsolete - related to some strange handling of photostim metadata by bruker / prairie view)
+
     c) `mean_fov.png` (mean projection of the gcamp channel from suite2p, that can be used to find the same FOV between this experiment and the photostim)
+    
     d) `medians_selected.png` (same image but with all s2p detected ROIs marked by points (at ROI centroid), with the ROIs selected for stim highlighted in orange and their s2p indexes written - this is used as a sanity check when doing the experiment to know that we are stimulating the correct cells by comparing what we see here to the prairie view gui with the spirals overlayed in the Mark Points view).
 
 
