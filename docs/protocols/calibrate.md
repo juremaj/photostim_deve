@@ -21,7 +21,7 @@ Materials: a cover slip with a thin layer of a dried fluorescent marker on one s
 10) Make sure that the dichroic Aurelie uses is out and replaced by the appropriate filter for photostim (on top of microscope) -> otherwise the power will not be sufficient to bleach for alignment or even to stimulate a cell
 11) Choose the laser power using the custom GUI controlling the polariser (Windows Taskbar -> black silhouette of a person): choose 6 for burning and 3 for photostim
 
-Calibration (22. 4. 2025):
+Stim power calibration (22. 4. 2025):
 
 | Polariser (deg) | Power (mW)     |
 |-----------------|----------------|
