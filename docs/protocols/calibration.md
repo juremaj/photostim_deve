@@ -56,7 +56,7 @@ Materials: a cover slip with a thin layer of a dried fluorescent marker on one s
 2) Click on Mark Points in prairie view 
 3) Add several spirals of 15 um diameter arranged in a grid covering the FOV (for example 3x3 with one point in the middle, one in each corner and one on each side):
 
-![Mark Points Grid](/docs/protocols/media/markpoints_grid.jpeg)
+![Mark Points Grid](/docs/protocols/media/markpoints_grid.png)
 
 4) Group spirals together by selecting them and then choosing `Create group`
 5) Define the protocol, in this case the exact parameters don't matter, just make sure to set `Duration (ms)` to around 100 ms when checking for alignment.
