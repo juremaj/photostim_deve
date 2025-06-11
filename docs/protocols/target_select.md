@@ -14,6 +14,7 @@ Goal: Use functional imaging to detect possible targets that can be used for pho
 1) Do a normal recording experiment, run preprocessing to get the suite2p preprocessed data, manually curate the ROIs if necessary
 2) Run `target_select.ipynb` in the root of `photostim_deve` which allows you to set the path to the s2p folder and the number of random cells you want to select
 3) This script will generate an `export/*subject*` folder in the root of `photostim_deve` where it will save the output files used to communicate to the microscope where to stimulate to target the chosen cells. This folder contains:
+
     a) `galvo_point_list_*subject*.gpl` (most important file that can be loaded directly in the prairie view GUI allowing the microscope to automatically generate the spirals centered on selected cells)
     b) `MarkPoints_*subject*.xml` (this is mostly obsolete - related to some strange handling of photostim metadata by bruker / prairie view)
     c) `mean_fov.png` (mean projection of the gcamp channel from suite2p, that can be used to find the same FOV between this experiment and the photostim)

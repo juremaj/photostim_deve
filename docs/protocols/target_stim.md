@@ -7,6 +7,7 @@ Goal: Stimulate the programmaticaly selected targets (see: [target_select](docs/
 1) Perform all the necessary steps to select targets, generating the necessary microscope control and helper files (see: [target_select](docs/protocols/target_select.md))
 2) Check that the calibration is working (see [calibrate](docs/protocols/calibrate.md)) 
 3) Set up the stimulation laser / path correctly(see [calibrate](docs/protocols/calibrate.md) for more detail):
+
     a) ETL should be at -8 to be aligned to the imaging
     b) IR shutter should be open
     c) Brainbow dicroic should be out and replaced with the photostim filter (top of microscope)
