@@ -22,6 +22,10 @@ def get_med_img_s2p(data_path):
         Mean image used for Suite2p segmentation.
     s2p_idxs : np.ndarray
         Indices of the ROIs that were classified as cells based on the iscell manual curation.
+    ops : dict
+        Dictionary containing the Suite2p operations parameters.
+    f : np.ndarray
+        Raw fluorescence traces for each ROI.
     -------
     """
 
@@ -31,6 +35,7 @@ def get_med_img_s2p(data_path):
     ops = np.load(os.path.join(s2p_path, 'ops.npy'), allow_pickle=True).item()
     stat = np.load(os.path.join(s2p_path, 'stat.npy'), allow_pickle=True)
     iscell = np.load(os.path.join(s2p_path, 'iscell.npy'), allow_pickle=True)
+    f = np.load(os.path.join(s2p_path, 'F.npy'), allow_pickle=True)
 
     # now filter stat based on the iscell manual curation
     iscell_bool = iscell[:,0].astype(bool)
@@ -46,7 +51,7 @@ def get_med_img_s2p(data_path):
 
     mn_image = ops['meanImg']
     
-    return np.array(meds), mn_image, s2p_idxs
+    return np.array(meds), mn_image, s2p_idxs, ops, f
 
 
 def get_seg_img_cp(data_path):

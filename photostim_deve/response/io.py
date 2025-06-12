@@ -157,8 +157,8 @@ def load_photostim_protocol(csv_path):
     stim_df = pd.read_csv(csv_path)
 
     all_time = stim_df['time'].to_numpy()
-    all_frame = stim_df['frame'].to_numpy()
-    all_point = stim_df['point'].to_numpy()
+    all_frame = stim_df['frame'].to_numpy().astype(int)
+    all_point = stim_df['point'].to_numpy().astype(int)
     all_coords_x = stim_df['x'].to_numpy()
     all_coords_y = stim_df['y'].to_numpy()
 
