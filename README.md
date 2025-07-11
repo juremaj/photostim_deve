@@ -18,14 +18,14 @@ Each of these (except burn_spots.md) will be associated with a python notebook o
 
 - Calibration:
   - Microscope (purely optical calibration protocols):
-    - z_align_psf.md - Measure alignment and psf in z for different wavelengths (830nm, 920nm and 1100nm)
-    - burn_spots.md - Align the scanning between imaging and photostim galvos by burning spots
-    - stim_timing.md - Empirically measure the duration of stimulation based on the stim artefact
-    - power_measure.md - Measure out of the objective power for imaging laser (at 830nm, 920nm and 1100nm) and the stim laser
+    - **z_align_psf.md** - Measure alignment and psf in z for different wavelengths (830nm, 920nm and 1100nm)
+    - **burn_spots.md** - Align the scanning between imaging and photostim galvos by burning spots
+    - **stim_timing.md** - Empirically measure the duration of stimulation based on the stim artefact
+    - **power_measure.md** - Measure out of the objective power for imaging laser (at 830nm, 920nm and 1100nm) and the stim laser
   - Response (in vivo calibration protocols):
-    - param_optim.md - Measure dF/F for different parameter values (e. g. time, laser power)
-    - phys_psf_xy.md - Measure the 'physiological PSF' - how dF/F depends on distance between a cell and a photostim spot in x and y by doing a grid of spirals
-    - phys_psf_z.md - Similar as above but by repeating a spiral fixed in x and y, but varying its z position
+    - **param_optim.md** - Measure dF/F for different parameter values (e. g. time, laser power)
+    - **phys_psf_xy.md** - Measure the 'physiological PSF' - how dF/F depends on distance between a cell and a photostim spot in x and y by doing a grid of spirals
+    - **phys_psf_z.md** - Similar as above but by repeating a spiral fixed in x and y, but varying its z position
 
 - Target selection:
   - ...
