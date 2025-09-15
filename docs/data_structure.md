@@ -1,12 +1,18 @@
 # Calcium Imaging Data Organization
 
-This repository contains raw data calcium imaging experiments conducted by **jm**.  
+This repository contains calcium imaging experiments conducted by **jm**.  
 Each dataset is organized by **mouse**, then by **session**, and finally by acquisition type.
 Each dataset also has corresponding metadata in **mouse** and **session** tables for example:
 - for mouse: genotype, DOB, virus injected etc.
 - for session: mouse age, mouse weight etc.
 For live version of metadata see: https://docs.google.com/spreadsheets/d/1rl6-1a2jIe5BLdo5ZLTNi4wGKArYpwoj0SRAIn4cNn0/edit?gid=2134894366#gid=2134894366 
 For automated analysis the **mouse** and **session** tables should be exported and saved in the **jm** folder.
+
+The main division of the data is into raw (`data_raw`) and preprocessed (`data_proc`) with the specifics of each described below. As a guideline:
+- `data_raw` contains the raw outputs of the imaging experiment transferred directly from the Bruker computer. This data should be read only (users should not add new 'raw' data, neither modify or delete any of the existing data). Includes for example imaging tiffs, camera tiffs, zstacks, data about opto/sensory stimuli etc.
+- `data_proc` contains all the outputs of analysis scripts that operate on `data_raw` and/or `data_proc`. This is more flexible, new analyses can be added etc. Includes for example suite2p outputs, motion energy calculations, computed responses of cells to opto/sensory stimuli etc.
+
+The basic convention of splitting by **mouse** and **session** is consistent across the two types, in order to maintain correspondance. For specific differences in the data format between the two see below.
 
 ## Modular Design of Experimental Pipelines
 
@@ -91,7 +97,7 @@ Session folders are named by **date** and an identifying **suffix**:
 **Format:**  
 `YYYY-MM-DD_[suffix]`
 
-#### Session Suffix Conventions:
+#### Session Suffix Conventions (raw data) :
 - **`_a` → Spontaneous activity session**  
   - Normal session of spontaneous activity  
   - May include a **/camera/** folder with videography recordings  
@@ -197,7 +203,6 @@ jm/
 └── jm_archived/
 ```
 
-# TODO: add docuemntation for processed data `data_proc`
 
 
 ### Best Practices for Saving New Raw Data
@@ -214,7 +219,7 @@ To maintain consistency and support automated analysis:
    - Do not mix camera data with `TSeries` or `fov` folders.
 
 3. **Photostimulation Sessions (`_b–f`)**
-   - Ensure that each `TSeries` folder contains its corresponding `_MarkPoints.xml` file.  
+   - Ensure that each `TSeries` folder contains its corresponding `MarkPoints` file.  
    - Never rename the XML file — the filename links it to the imaging data.
 
 4. **Sensory Stimulation Sessions (`_s`)**
@@ -228,5 +233,33 @@ To maintain consistency and support automated analysis:
    - Never alter automatically generated folder names (`SingleImage-*`, `TSeries-*`).  
    - Avoid spaces in folder or file names (underscores `_` are preferred).  
    - Keep raw data unmodified
+
+
+## Processed data (`data_proc`) folder Structure
+
+### Common data across session types:
+- The only thing in common with all processed data folders is that they will contain a Suite2p folder
+- Additionally if an `fov` folder exists in the raw data, the processed data should also include a copy of that folder
+
+### Session type specific data (processed data):
+NOTE: ... denotes that additional conventions are not strictly set as of now.
+
+- **`_a` → Spontaneous activity session**  
+  - These may additionally include a `move_deve` folder that contains the computed motion energy and outputs of analyses from the Majnik et al. 2025 paper.
+  - ...
+
+- **`_b` to `_f` → Photostimulation sessions**  
+  - To compute responses of cells to photostim these sessions should additionally contain a copy of the `MarkPoints` file
+  - ...
+
+- **`_s` → Sensory stimulation session**  
+  - To compute responses of cells to sensory stim these sessions should additionally contain a copy of `stim_protocol.npy` and `stim_times.npy`
+  - ...
+
+- **`_z` → Z-stack session**  
+  - ...
+
+- **`_calib` → Calibration session**  
+  - ...
 
 
