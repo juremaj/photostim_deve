@@ -135,8 +135,11 @@ Each session folder typically contains:
   - Each folder contains ~20 minutes of continuous calcium imaging data  
 
 Here is the example file structure related to the above notes:
+
 ---
+
 ## Example Structure
+```text
 jm/
 │
 ├── jm048/
@@ -191,8 +194,7 @@ jm/
 ├── jm049/
 ├── jm050/
 └── jm_archived/
-
----
+```
 
 # TODO: add docuemntation for processed data `data_proc`
 
