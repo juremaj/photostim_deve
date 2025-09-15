@@ -76,12 +76,13 @@ Now that we have a basic idea of the modular structure we can look a bit into ho
 Each folder corresponds to one mouse and contains all imaging sessions.  
 
 **Example:**
+```text
 jm048/
 ├── 2025-05-06_a/
 ├── 2025-05-06_b/
 ├── 2025-05-07_c/
 └── 2025-05-09_s/
-
+```
 ---
 
 ### Session Folders
