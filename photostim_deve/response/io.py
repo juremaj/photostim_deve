@@ -163,3 +163,33 @@ def load_photostim_protocol(csv_path):
     all_coords_y = stim_df['y'].to_numpy()
 
     return all_time, all_frame, all_point, all_coords_x, all_coords_y
+
+def get_all_tiff_paths(tiff_dir):
+    """
+    Get full tiff paths from the suite2p motion corrected tiff directory.
+    It also ensures that the tiff files are sorted correctly despite strange s2p naming conventions.
+    
+    -------------
+    
+    Parameters:
+        tiff_dir : (str)
+            Directory containing the motion corrected tiff files from suite2p.
+
+    Returns:
+        all_tiff_paths : (list) 
+            List of full paths to the tiff files, sorted by their start frame index.
+
+    """
+    
+    all_tiff_paths = [os.path.join(tiff_dir, tiff_path) for tiff_path in os.listdir(tiff_dir) if tiff_path.endswith('.tif')]
+    all_tiff_paths.sort()
+
+    # get tiff start frame index for each tiff file (string between file00 and _)
+    tiff_start_frames = [int(os.path.basename(tiff_path).split('file00')[1].split('_')[0]) for tiff_path in all_tiff_paths]
+    tiff_start_frames = np.array(tiff_start_frames)
+
+    # now resort the tiff paths and start frames
+    sort_indices = np.argsort(tiff_start_frames)
+    all_tiff_paths = [all_tiff_paths[i] for i in sort_indices]
+
+    return all_tiff_paths
