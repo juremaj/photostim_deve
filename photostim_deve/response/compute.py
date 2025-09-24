@@ -9,7 +9,7 @@ from scipy.interpolate import interp1d
 # IMPORTANT: Deal with the edge case where the stimulation frame is at the beginning or end of the tiff file
 # IMPORTANT: Figure out what is causing the mean of empty slice error (catch the RuntimeWarning)
 # USE THIS TO DEBUG: warnings.filterwarnings('error')
-def get_fov_resp(all_tiff_paths, all_frame, bsln_n_frames=10, resp_n_frames=10, fov_shape=(512, 512), uint12_max=4095*2):
+def get_fov_resp(all_tiff_paths, all_frame, bsln_n_frames=10, resp_n_frames=10, fov_shape=(512, 512)):
     """
     Load the tiff files and extract the mean fluorescence in the baseline and response windows for each stimulation.
 
@@ -25,8 +25,8 @@ def get_fov_resp(all_tiff_paths, all_frame, bsln_n_frames=10, resp_n_frames=10, 
         The number of frames after the stimulation to use for the response window (default is 10).
     fov_shape : tuple
         The shape of the FOV in pixels (default is (512, 512)).
-    uint12_max : int
-        The maximum value for the uint12 data type, used for conversion to uint8 (default is 4095 * 2).
+    comp_fov_dyn: tuple
+        If to compute the 'dynamics' of the average response (e. g. each frame of the stim window not just before and after)
         
     Returns:
     -------
@@ -34,7 +34,8 @@ def get_fov_resp(all_tiff_paths, all_frame, bsln_n_frames=10, resp_n_frames=10, 
         A 2D array of the mean fluorescence in the baseline window for each stimulation point (shape: (n_stim, fov_shape[0], fov_shape[1])).
     fov_resp : np.ndarray
         A 2D array of the mean fluorescence in the response window for each stimulation point (shape: (n_stim, fov_shape[0], fov_shape[1])).
-
+    fov_diff : np.ndarray
+        A 2D array of the difference between the two (response - baseline)
     """
 
     n_stim = len(all_frame)

@@ -297,7 +297,7 @@ def plot_response_matched_rois(s2p_resp, all_point_s2p_idx, n_points, peristim_w
             idx = i * n_cols + j
             if idx < n_points:
                 axs[i, j].plot(s2p_resp[idx, :, :].T, color='grey', alpha=0.1)
-                axs[i, j].plot(np.mean(s2p_resp[idx, :, :], axis=0), color='C0', alpha=0.5, zorder=10)
+                axs[i, j].plot(np.mean(s2p_resp[idx, :, :], axis=0), color='black', alpha=0.5, zorder=10)
                 axs[i, j].axvline(peristim_wind[0], color='k', linestyle='--')
                 axs[i, j].set_xticks([peristim_wind[0], (peristim_wind[1])/2 + peristim_wind[0], peristim_wind[1] + peristim_wind[0]])
                 axs[i, j].set_xticklabels([0, 0.5, 1])
@@ -329,7 +329,7 @@ def plot_response_matched_rois(s2p_resp, all_point_s2p_idx, n_points, peristim_w
         plt.savefig(save_path)
 
 
-def plot_response_matched_rois_heatmap(s2p_resp, all_point_s2p_idx, n_points, peristim_wind, n_rows_fov=10, save_path=None):
+def plot_response_matched_rois_heatmap(s2p_resp, all_point_s2p_idx, n_points, peristim_wind, n_rows_fov=10, vlim_std=8, save_path=None):
     """
     Plot the responses of matched ROIs to the stimulation points during the stimulation protocol. Each trial is shown as a line of a heatmap.
     Plotting the same data as plot_response_matched_rois but as a heatmap.
@@ -349,7 +349,7 @@ def plot_response_matched_rois_heatmap(s2p_resp, all_point_s2p_idx, n_points, pe
             idx = i * n_cols + j
             if idx < n_points:
                 
-                axs[i, j].imshow(s2p_resp[idx, :, :], aspect='auto', cmap='bwr', vmin=np.median(s2p_resp[idx, :, :]) - 8 * np.std(s2p_resp[idx, :, :]), vmax=np.median(s2p_resp[idx, :, :]) + 8 * np.std(s2p_resp[idx, :, :]))
+                axs[i, j].imshow(s2p_resp[idx, :, :], aspect='auto', cmap='bwr', vmin=np.median(s2p_resp[idx, :, :]) - vlim_std * np.std(s2p_resp[idx, :, :]), vmax=np.median(s2p_resp[idx, :, :]) + vlim_std * np.std(s2p_resp[idx, :, :]))
                 axs[i, j].axvline(peristim_wind[0], color='k', linestyle='--')
                 axs[i, j].set_xticks([peristim_wind[0], (peristim_wind[1])/2 + peristim_wind[0], peristim_wind[1] + peristim_wind[0]])
                 axs[i, j].set_xticklabels([0, 0.5, 1])
@@ -381,13 +381,13 @@ def plot_response_matched_rois_heatmap(s2p_resp, all_point_s2p_idx, n_points, pe
     if save_path is not None:
         plt.savefig(save_path)
 
-def plot_response_matched_rois_avg(s2p_resp, peristim_wind=[10, 30], save_path=None):
+def plot_response_matched_rois_avg(s2p_resp, peristim_wind=[10, 30], vlim_std=8,save_path=None):
     """
     Plot the summary responses for all ROIs averaged across all trial repetitions for that ROI. Shown as a heatmap.
     """
     s2p_resp_mn = np.mean(s2p_resp, axis=1)
     plt.figure(figsize=(2, 2), dpi=300)
-    plt.imshow(s2p_resp_mn, aspect='auto', cmap='bwr', vmin=np.median(s2p_resp_mn) - 8 * np.std(s2p_resp_mn), vmax=np.median(s2p_resp_mn) + 8 * np.std(s2p_resp_mn))
+    plt.imshow(s2p_resp_mn, aspect='auto', cmap='bwr', vmin= - vlim_std * np.std(s2p_resp_mn), vmax= vlim_std * np.std(s2p_resp_mn))
     plt.axvline(peristim_wind[0], color='k', linestyle='--')
     plt.ylabel('Point')
     plt.xlabel('Time (s)')
