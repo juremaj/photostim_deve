@@ -1,6 +1,6 @@
-# Calibration 
+# Burn spots
 
-## Alignment calibration
+## Burn spots for initial alignment calibration
 
 Goal: make sure that where you tell the microscope to stimulate in the GUI corresponds to the place where it will actually stimulate. E. g. that the imaging and the stimulation scanners are aligned.
 
@@ -43,17 +43,17 @@ Stim power calibration (22. 4. 2025):
 15) When prompted if to use the current calibration choose `No` and `Next`
 16) Choose the `Duration (ms)` (100 ms should be enough, but can also be increased) the laser power here doesn't do anything, since it is not controlled by prairie view (but by the GUI in step 11)) and `Next`
 17) Follow the calibration steps by using Live scan, selecting the positions, burning and then realigning the points. Do this iteratively by following the instructions in prairie view.
-18) You can then if the calibration was successful
+18) If the calibration is sucessful you can save the calibration and apply it each subsequent time doing the photostim experiment.
 
 
-## Check alignment calibration
+## Burn spots to check alignment calibration
 
 Goal: make sure that where you tell the microscope to stimulate in the GUI corresponds to the place where it will actually stimulate. E. g. that the imaging and the stimulation scanners are aligned.
 
 Materials: a cover slip with a thin layer of a dried fluorescent marker on one side.
 
-1) Follow steps 1) to 11) of the 'Alignment calibration' protocol above
-2) Click on Mark Points in prairie view 
+1) Follow steps 1) to 11) of the 'Alignment calibration' protocol above (if not done before), if done before then just load a `galvo calibration`
+2) Click on Mark Points in prairie view (here you will be asked to load a `galvo calibration` if you haven't done so in the step above)
 3) Add several spirals of 15 um diameter arranged in a grid covering the FOV (for example 3x3 with one point in the middle, one in each corner and one on each side):
 
 ![Mark Points Grid](/docs/protocols/media/markpoints_grid.png)
@@ -69,4 +69,4 @@ Materials: a cover slip with a thin layer of a dried fluorescent marker on one s
 
     b) IR shutter is closed
     
-    c) Polariser controlling the laser power is set too low (should be 6 - 140 mW for this protocol)
+    c) Polariser controlling the laser power is set too low (should be around 140 mW for this protocol)
