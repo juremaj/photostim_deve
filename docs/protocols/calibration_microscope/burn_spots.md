@@ -1,4 +1,5 @@
-# Burn spots
+# burn_spots.md (Burn spots to register stim and imaging scanners))
+There is no associated Jupyter notebook for this part (no graph outputs required).
 
 ## Burn spots for initial alignment calibration
 
