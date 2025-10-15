@@ -77,7 +77,7 @@ For example for pockels:
 | 1000| 228 | 178 | 176 | 63  |
 
 or for uncaging:
-| uncaging | 1100 nm |
+| uncaging | 1040 nm |
 |-----------|----------|
 | 0         | 4.4      |
 | 1         | 6.7      |
