@@ -10,7 +10,7 @@ To measure and document the imaging ('pockels') and stimulation ('uncaging') pos
 - Rhodamine-coated slide (very thin homogeneous fluorescent layer, see picture below)
 - Optical mount (to position the slide under the objective)
 
-<img src="/docs/protocols/media/rhodamine_slide.png" width="50%">
+<img src="/docs/protocols/media/rhodamine_slide.jpeg" width="50%">
 
 
 ## Protocol
