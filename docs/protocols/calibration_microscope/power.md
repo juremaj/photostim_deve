@@ -3,7 +3,7 @@ See `calibration_notebooks/power.ipynb` for associated notebook.
 
 ## Purpose
 
-To measure and document the imaging laser power output at different wavelengths on the Bruker Ultima two-photon microscope using a calibrated power meter.
+To measure and document the imaging ('pockels') and stimulation ('uncaging') laser power output at different wavelengths on the Bruker Ultima two-photon microscope using a power meter.
 
 ## Materials
 
