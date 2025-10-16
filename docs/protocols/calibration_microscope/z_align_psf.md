@@ -58,5 +58,7 @@ Data and plotting:
 1) If your data has been transferred to the server at `data_jm/data_raw/calibration/YYYY-MM-DD_zpsf` and this folder contains subfolders for different calibrations (e.g. `830nm`, `920nm`, `1100nm`, `1040nm_stim`. You can then simply run the Jupyter notebook associated with this protocol (`calibration_notebooks/z_align_psf.ipynb`), the only thing that needs to be changed is a single line defining the ID of the calibration (e. g. `2025-10-10_zpsf`)
 2) This will generate a calibration plot saved in `photostim_deve/utils/calibration_z_align_psf` as a `.png` file with the same name as the root data folder (e. g. `2025-10-10_zpsf.png`). See below how this plot should look (NOTE: here the slide moved before recording the imaging and stim, which is why the stim section is shifted):
 <img src="/docs/protocols/media/2025-10-10_zpsf.png" width="75%">
+
 3) There are some additional lines in the notebook that allows the user to look at the data in Napari, which can be good to visualise other things such as field curvature and look at different projections of the data (for example in 3D or X-Z or Y-Z).
+   
 4) After the calibration it's also nice to print the graph and tape it somewhere near the microscope (and if you can also push it to the GitHub repo so we have a digital backup).
