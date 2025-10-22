@@ -5,6 +5,8 @@ There is no associated Jupyter notebook for this part (no graph outputs required
 
 Goal: make sure that where you tell the microscope to stimulate in the GUI corresponds to the place where it will actually stimulate. E. g. that the imaging and the stimulation scanners are aligned.
 
+When to do it: If using a new set of imaging parameters (different zoom, different number of pixels, different number of planes etc.) or when noticing that the alignment is not good (based on the 'check alignemnt calibration' protocol described lower down)
+
 Materials: a cover slip with a thin layer of a dried fluorescent marker on one side.
 
 1) Start up the microscope
