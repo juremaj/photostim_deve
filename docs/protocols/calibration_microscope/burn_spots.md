@@ -5,26 +5,28 @@ There is no associated Jupyter notebook for this part (no graph outputs required
 
 Goal: make sure that where you tell the microscope to stimulate in the GUI corresponds to the place where it will actually stimulate. E. g. that the imaging and the stimulation scanners are aligned.
 
-When to do it: If using a new set of imaging parameters (different zoom, different number of pixels, different number of planes etc.) or when noticing that the alignment is not good (based on the 'check alignemnt calibration' protocol described lower down)
+When to do it: If using a new set of imaging parameters (different zoom, different number of pixels, different number of planes etc.) or when noticing that the alignment is not good (based on the 'check alignemnt calibration' protocol described lower down).
 
 Materials: a cover slip with a thin layer of a dried fluorescent marker on one side.
 
-1) Start up the microscope
+1) Start up the microscope.
 2) Orient the cover slip with the fluorescent side facing down and position it under the objective, as horizontal as possible (the side that we need to use for imaging is indicated also on the slide).
-3) Add a drop of water to the objective and lower it until just before touching the cover slip
-4) Switch to prairie view and first load the correct environment (e.g.: "File/load settings/jm_30Hz_1plane_template") set the z of ETL to -8 um -> We found this empirically, that basically the photostim laser (in this case set 1040nm) and the "recording" laser (set at 920nm) have 8 um apart (they are not focusing on the same Z value, see graph below):
+3) Add a drop of water to the objective and lower it until just before touching the cover slip.
+4) Switch to prairie view and first load the correct environment (e.g.: "File/load settings/jm_30Hz_1plane_template") set the z of ETL to -8 um -> We found this empirically, that basically the photostim laser (in this case set at 1040nm) and the "recording" laser (set at 920nm) have 8 um apart (they are not focusing on the same Z value, see graph below):
 
 ![Stimulation Z Offset](/docs/protocols/media/img_stim_z_offset.jpeg)
 
-***If we want to use this settings, it means that we will respect the size of the FOV, zoom etc, if we need to change them, we need to create an environment from scratch and adjust the rest of the settings accordingly.
+***If we want to use these settings, it means that we will respect the size of the FOV, zoom etc, if we need to change them, we need to create an environment from scratch and adjust the rest of the settings accordingly.
 
-5) Set the power to be very low (for example pockels 10 or so) since the slide is very bright and could damage the PMTs, increase if necessary
-6) Now move the objective up with the z focus (manual / motor, not ETL; negative (-) is up) until you see the fluorescence slide in focus
-7) If the slide is not well aligned (e. g. if you don't see it across the whole FOV) then maybe adjust it to be more perpendicular to the objective
-8) Before you start the calibration make sure that you have the correct imaging settings loaded (best way to do this is using a pre-saved environment for consistency)
-9) Also make sure that the photostim shutter is open ('IR shutter', next to the normal shutter, in prairie view gui)
-10) Make sure that the dichroic Aurelie uses is out and replaced by the appropriate filter for photostim (on top of microscope) -> otherwise the power will not be sufficient to bleach for alignment or even to stimulate a cell
-11) Choose the laser power using the custom GUI controlling the polariser (Windows Taskbar -> black silhouette of a person): choose in concordance with the uncaging table on the box of the Bruker
+5) Set the power to be very low (for example pockels 10 or so) since the slide is very bright and could damage the PMTs, increase if necessary.
+6) Now move the objective up with the z focus (manual / motor, not ETL; negative (-) is up) until you see the fluorescence slide in focus.
+7) If the slide is not well aligned (e. g. if you don't see it across the whole FOV) then maybe adjust it to be more perpendicular to the objective.
+8) Before you start the calibration make sure that you have the correct imaging settings loaded (best way to do this is using a pre-saved environment for consistency).
+9) Also make sure that the photostim shutter is open ('IR shutter', next to the normal shutter, in prairie view gui).
+   <img width="254" height="87" alt="image" src="https://github.com/user-attachments/assets/0de87e5a-d050-4ec2-800a-bb78c654c30f" />
+
+10) Make sure that the dichroic Aurelie uses is out and replaced by the appropriate filter for photostim (on top of microscope) -> otherwise the power will not be sufficient to bleach for alignment or even to stimulate a cell.
+11) Choose the laser power using the custom GUI controlling the polariser (Windows Taskbar -> black silhouette of a person): choose in concordance with the uncaging table on the box of the Bruker:
 
 Stim power calibration (23. 10. 2025):
 
