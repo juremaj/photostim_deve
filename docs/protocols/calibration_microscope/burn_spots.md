@@ -26,7 +26,7 @@ Materials: a cover slip with a thin layer of a dried fluorescent marker on one s
    <img width="254" height="87" alt="image" src="https://github.com/user-attachments/assets/0de87e5a-d050-4ec2-800a-bb78c654c30f" />
 
 10) Make sure that the dichroic Aurelie uses is out and replaced by the appropriate filter for photostim (on top of microscope) -> otherwise the power will not be sufficient to bleach for alignment or even to stimulate a cell.
-11) Choose the laser power using the custom GUI controlling the polariser (Windows Taskbar -> black silhouette of a person): choose in concordance with the uncaging table on the box of the Bruker:
+11) For the uncaging to properly work, we also need to change manually the polariser controlling the laser power to 7 by moving the wheel in the thorlabs box behind the microscope ( in this case, the laser power should be around 140 nm; see the picture): choose in concordance with the uncaging table on the box of the Bruker:
 
 Stim power calibration (23. 10. 2025):
 
@@ -41,21 +41,6 @@ Stim power calibration (23. 10. 2025):
 | 6               | 88.8           |
 | 7               | 123.1          |
 
-12) For the uncaging to properly work, we also need to change manually the polariser tp 7 by moving the wheel in the thorlabs of the picture:
-
-| Polariser (deg) | Power (mW)     |
-|-----------------|----------------|
-| 0               | 9              |
-| 1               | 19             |
-| 2               | 34             |
-| 3               | 53             |
-| 4               | 78             |
-| 5               | 107            |
-| 6               | 140            |
-| 7               | 177            |
-| 8               | 218            |
-| 9               | 262            |
-| 10              | 310            |
 
 <img width="302" height="402" alt="image" src="https://github.com/user-attachments/assets/4612e43f-e045-49d8-b922-4cbc48169d28" />
 
@@ -95,6 +80,6 @@ Materials: a cover slip with a thin layer of a dried fluorescent marker on one s
 
     b) IR shutter is closed
     
-    c) Polariser controlling the laser power is set too low (should be around 140 mW for this protocol)
+    c) Polariser controlling the laser power is set too low, or missalignment of the laser so the power output from the objective is too low (should be around 140 mW for this protocol)
 
 IMPORTANT: for the photostim while recording, synchronize the photostimulation by clicking on synchronize with Mark points in the Prairie View GUI.
