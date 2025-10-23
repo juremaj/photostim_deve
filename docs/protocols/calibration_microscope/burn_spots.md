@@ -26,7 +26,7 @@ Materials: a cover slip with a thin layer of a dried fluorescent marker on one s
    <img width="254" height="87" alt="image" src="https://github.com/user-attachments/assets/0de87e5a-d050-4ec2-800a-bb78c654c30f" />
 
 10) Make sure that the dichroic Aurelie uses is out and replaced by the appropriate filter for photostim (on top of microscope) -> otherwise the power will not be sufficient to bleach for alignment or even to stimulate a cell.
-11) For the uncaging to properly work, we also need to change manually the polariser controlling the laser power to 7 by moving the wheel in the thorlabs box behind the microscope ( in this case, the laser power should be around 140 nm; see the picture): choose in concordance with the uncaging table on the box of the Bruker:
+11) For the uncaging to properly work, we also need to change manually the polariser controlling the laser power to 7 by moving the wheel in the thorlabs box behind the microscope ( in this case, the laser power should be around 140 nm; see the picture): choose in concordance with the uncaging table located on the box of the Bruker:
 
 Stim power calibration (23. 10. 2025):
 
