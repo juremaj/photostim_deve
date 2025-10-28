@@ -79,7 +79,7 @@ def indent(elem, level=0):
         if level and (not elem.tail or not elem.tail.strip()):
             elem.tail = i
 
-def write_mp_file(meds, inds, mp_temp_path=None, export_path=None, mouse_str=None, fov_shape=(512, 512), SpiralWidth='0.0199325637636341', SpiralHeight='0.0199325637636341', SpiralSizeInMicrons='15.0000000000001'): 
+def write_mp_file(meds, inds, mp_temp_path=None, export_path=None, mouse_str=None, fov_shape=(512, 512), SpiralWidth='0.0199325637636341', SpiralHeight='0.0199325637636341', SpiralSizeInMicrons='15.0000000000001', use_seg='cellpose'): 
   
   tree = ET.parse(mp_temp_path)
   root = tree.getroot()
@@ -104,9 +104,9 @@ def write_mp_file(meds, inds, mp_temp_path=None, export_path=None, mouse_str=Non
 
   indent(root)
 
-  tree.write(os.path.join(export_path, f'MarkPoints_{mouse_str}.xml'), encoding='utf-8', xml_declaration=True)
+  tree.write(os.path.join(export_path, f'MarkPoints_{mouse_str}_{use_seg}.xml'), encoding='utf-8', xml_declaration=True)
 
-def write_gpl_file(meds, inds, gpl_temp_path=None, export_path=None, mouse_str=None, fov_shape=(512, 512), ActivityType="MarkPoints", UncagingLaser="Uncaging", UncagingLaserPower="1000", Duration="50", IsSpiral="True", SpiralSize="0.110870362837845", SpiralRevolutions="7", Z="807.424999999999", X_lim = 2.79639654844993, Y_lim = 3.09924006097119):
+def write_gpl_file(meds, inds, gpl_temp_path=None, export_path=None, mouse_str=None, fov_shape=(512, 512), ActivityType="MarkPoints", UncagingLaser="Uncaging", UncagingLaserPower="1000", Duration="50", IsSpiral="True", SpiralSize="0.110870362837845", SpiralRevolutions="7", Z="807.424999999999", X_lim = 2.79639654844993, Y_lim = 3.09924006097119, use_seg='cellpose'):
     """
     Write a galvo point list file (.gpl) based on the medians of the ROIs.
 
@@ -171,4 +171,4 @@ def write_gpl_file(meds, inds, gpl_temp_path=None, export_path=None, mouse_str=N
     # now save the file
     indent(root)
 
-    tree.write(os.path.join(export_path, f'galvo_point_list_{mouse_str}.gpl'), encoding='utf-8', xml_declaration=True)
+    tree.write(os.path.join(export_path, f'galvo_point_list_{mouse_str}_{use_seg}.gpl'), encoding='utf-8', xml_declaration=True)

@@ -1,16 +1,16 @@
 import os 
 import matplotlib.pyplot as plt
 
-def plot_fov(mn_image, export_path, vmax=400):
+def plot_fov(mn_image, export_path, vmax=400, use_seg='cellpose'):
     """
     Plot the mean FOV image.
     """
     plt.figure(figsize=(5, 5), dpi=300)
     plt.imshow(mn_image, cmap='gray', vmin=0, vmax=vmax)
     plt.axis('off')
-    plt.savefig(os.path.join(export_path, 'mean_fov.png'), dpi=300)
+    plt.savefig(os.path.join(export_path, f'mean_fov_{use_seg}.png'), dpi=300)
 
-def plot_fov_meds(mn_image, meds, inds, export_path, vmax=400):
+def plot_fov_meds(mn_image, meds, inds, export_path, vmax=400, use_seg='cellpose'):
     """
     Plot the mean FOV image with all medians and the selected ones highlighted.
     """
@@ -22,4 +22,4 @@ def plot_fov_meds(mn_image, meds, inds, export_path, vmax=400):
         plt.text(meds[i,1], meds[i,0]+5, i, fontsize=5, color='C1', ha='right', va='top')
     plt.imshow(mn_image, cmap='gray', vmin=0, vmax=vmax)
     plt.axis('off')
-    plt.savefig(os.path.join(export_path, 'medians_selected.png'), dpi=300)
+    plt.savefig(os.path.join(export_path, f'medians_selected_{use_seg}.png'), dpi=300)
