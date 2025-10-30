@@ -165,7 +165,7 @@ def plot_fov_map(fov_plot, all_coords_x, all_coords_y, vlim=200, save_path=None,
             idx = i * n_cols + j
             if idx < fov_plot.shape[0]:
                 axs[i, j].imshow(fov_plot[idx, :, :], cmap='bwr', vmin=-vlim, vmax=vlim)
-                axs[i, j].scatter(all_coords_y[idx], all_coords_x[idx], color='black', s=1, label='Stimulus Point')
+                axs[i, j].scatter(all_coords_y[idx], all_coords_x[idx], color='black', s=0.5, label='Stimulus Point')
                 axs[i, j].set_title(f'point {idx}')
             axs[i, j].axis('off')
        
