@@ -138,7 +138,7 @@ def plot_dist_dff(dist_diff_mn, n_points=40, dist_bins_xlim=362, dist_bins_xlim_
     if save_path is not None:
         plt.savefig(save_path, bbox_inches='tight', dpi=300)
 
-def plot_fov_map(fov_plot, all_coords_x, all_coords_y, vlim=200, save_path=None, n_rows=8):
+def plot_fov_map(fov_plot, all_coords_x, all_coords_y, vlim=200, save_path=None, n_rows=8, zoomin_npix=None):
     """
     Plot the fov_map with all stim points overlaid.
 
@@ -151,6 +151,12 @@ def plot_fov_map(fov_plot, all_coords_x, all_coords_y, vlim=200, save_path=None,
             Y coordinates of the stimulus point corresponding to each stimulation
         vlim : (int)
             Saturation limits for visualizing fov_map.
+        n_rows : (int)
+            Number of rows in the subplot grid.
+        save_path : (str or None)
+            Path to save the plot. If None, the plot will not be saved.
+        zoomin_npix : (int)
+            Number of pixels to zoom in around the stimulus point. If None, no zooming is applied.
     """
 
     n_cols = int(fov_plot.shape[0] / n_rows)
@@ -159,13 +165,28 @@ def plot_fov_map(fov_plot, all_coords_x, all_coords_y, vlim=200, save_path=None,
         n_cols += 1
 
     fig, axs = plt.subplots(n_rows, n_cols, figsize=(n_cols*4, n_rows*4), dpi=300)
-
     for i in range(n_rows):
         for j in range(n_cols):
             idx = i * n_cols + j
             if idx < fov_plot.shape[0]:
-                axs[i, j].imshow(fov_plot[idx, :, :], cmap='bwr', vmin=-vlim, vmax=vlim)
-                axs[i, j].scatter(all_coords_y[idx], all_coords_x[idx], color='black', s=0.5, label='Stimulus Point')
+                fov = fov_plot[idx, :, :]
+                coords = (all_coords_x[idx], all_coords_y[idx])
+
+                if zoomin_npix is not None:
+                    # pad the fov to avoid index errors
+                    idx = int(idx)
+                    pad_width = zoomin_npix // 2 + 1
+                    fov_padded = np.pad(fov, pad_width, mode='constant', constant_values=0)
+                    x_center = int(coords[0] + pad_width)
+                    y_center = int(coords[1] + pad_width)
+
+                    fov = fov_padded[x_center - zoomin_npix//2 : x_center + zoomin_npix//2,
+                                     y_center - zoomin_npix//2 : y_center + zoomin_npix//2]
+
+                    coords = (zoomin_npix//2, zoomin_npix//2)
+
+                axs[i, j].imshow(fov, cmap='bwr', vmin=-vlim, vmax=vlim)
+                axs[i, j].scatter(coords[1], coords[0], color='black', s=0.5, label='Stimulus Point')
                 axs[i, j].set_title(f'point {idx}')
             axs[i, j].axis('off')
        
@@ -173,7 +194,7 @@ def plot_fov_map(fov_plot, all_coords_x, all_coords_y, vlim=200, save_path=None,
     if save_path is not None:
         plt.savefig(save_path, bbox_inches='tight', dpi=600)
 
-def plot_kernel_2d(k2d, fov_shape=(512, 512), n_dist_bins=724, vlim=200, save_path=None):
+def plot_kernel_2d(k2d, fov_shape=(512, 512), n_dist_bins=724, vlim=200, save_path=None, zoomin_npix=None):
     """
     Plot the 2D kernel.
     
@@ -186,18 +207,32 @@ def plot_kernel_2d(k2d, fov_shape=(512, 512), n_dist_bins=724, vlim=200, save_pa
             Saturation limits for visualizing the kernel.
     """
 
-    # Display
+    # Display the kernel
+    plt.figure(figsize=(3, 3), dpi=300)
     plt.imshow(k2d, cmap='bwr', vmin=-vlim, vmax=vlim)
     plt.colorbar()
 
     cent_xy = n_dist_bins//2
 
-    plt.scatter(cent_xy, cent_xy, color='black', s=1, label='Stimulus Points')
-    plt.title("2D Rotated Measured Kernel")
-    plt.xlim(cent_xy - fov_shape[1]//2, cent_xy + fov_shape[1]//2)
-    plt.ylim(cent_xy - fov_shape[0]//2, cent_xy + fov_shape[0]//2)
-    plt.axis('off')
+    plt.title("Rotated kernel")
+    if zoomin_npix is not None:
+        plt.xlim(cent_xy - zoomin_npix//2, cent_xy + zoomin_npix//2)
+        plt.ylim(cent_xy - zoomin_npix//2, cent_xy + zoomin_npix//2)
+    else: # zoomin to fov size
+        plt.xlim(cent_xy - fov_shape[1]//2, cent_xy + fov_shape[1]//2)
+        plt.ylim(cent_xy - fov_shape[0]//2, cent_xy + fov_shape[0]//2)
+
+    # add ticks and labels for center being 0, 0
+    if zoomin_npix is not None:
+        tick_locs = np.arange(cent_xy - zoomin_npix//2, cent_xy + zoomin_npix//2 + 1, zoomin_npix//4)
+    else:
+        tick_locs = np.arange(cent_xy - fov_shape[1]//2, cent_xy + fov_shape[1]//2 + 1, fov_shape[1]//4)
     
+    tick_labels = tick_locs - cent_xy
+    plt.xticks(tick_locs, tick_labels)
+    plt.yticks(tick_locs, tick_labels)
+
+
     if save_path is not None:
         plt.savefig(save_path, bbox_inches='tight', dpi=300)
 
