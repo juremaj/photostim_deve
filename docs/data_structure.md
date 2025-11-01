@@ -20,14 +20,15 @@ Before going to the nitty gritty of the file organisation first lets just go thr
 
 | Session Suffix | Name / Purpose             |
 |----------------|----------------------------|
-| `_a`           | Spontaneous activity       |
-| `_b` – `_f`    | Photostimulation           |
-| `_s`           | Sensory stimulation        |
-| `_z`           | Z-stack imaging            |
-| `_calib`       | Calibration (in vivo)      |
+| `_a`           | Spontaneous                |
+| `_b` – `_f`    | Photostim                  |
+| `_s`           | Evoked                     |
+| `_z`           | Zstack                     |
+| `_calib`       | Calibration                |
 
-The folder structure described below is intentionally **modular**, making it easy to design and conceptualize experimental pipelines.  
-Each session type (spontaneous, photostim, sensory, z-stack, calibration) is a **self-contained module** with predictable inputs and outputs. Each module can then also be associated with its specific analyses (for example computing spointaneous calcium event rates in `_a` sessions, mapping photostim responses in `_b` – `_f` sessions etc.)  
+The experimental protocols for each of the session types is described in an associated `.md` for each sessions type (e. g. `evoked.md`)
+
+Each session type (spontaneous, photostim, sensory, z-stack, calibration) is a self-contained module with predictable inputs and outputs. Each module can then also be associated with its specific analyses (for example computing spontaneous calcium event rates in `_a` sessions, mapping photostim responses in `_b` – `_f` sessions etc.)  
 
 In terms of experimental design this modular structure is also nice to conceptualise experiments.
 For example we can think of a simple experiment where we do a spontaneus session and then a zstack as `_a` -> `_z`
