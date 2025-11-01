@@ -18,14 +18,13 @@ Each of these (except burn_spots.md) will be associated with a python notebook o
     - [phys_psf_xy.md](https://github.com/juremaj/photostim_deve/blob/main/docs/protocols/calibration_response/phys_psf_xy.md) [(code)](https://github.com/juremaj/photostim_deve/blob/main/notebooks/calibration_response/phys_psf_xy.ipynb) - Measure the 'physiological PSF' - how dF/F depends on distance between a cell and a photostim spot in x and y by doing a grid of spirals
     - [phys_psf_z.md](https://github.com/juremaj/photostim_deve/blob/main/docs/protocols/calibration_response/phys_psf_z.md) [(code)](https://github.com/juremaj/photostim_deve/blob/main/notebooks/calibration_response/phys_psf_z.ipynb) - Similar as above but by repeating a spiral fixed in x and y, but varying its z position
 
-- Experiment (IN PROGRESS, new protocols...):
-  - [target_select.md](https://github.com/juremaj/photostim_deve/blob/main/docs/protocols/experiment/target_select.md) [(code)]() 
-
-
-- Experiment (IN PROGRESS, old protocols...):
-  - [target_select.md](https://github.com/juremaj/photostim_deve/blob/main/docs/protocols/experiment/target_select.md) [(code)]() 
-  - [target_stim.md](https://github.com/juremaj/photostim_deve/blob/main/docs/protocols/experiment/target_stim.md) [(code)]() 
-  - [resp_map.md](https://github.com/juremaj/photostim_deve/blob/main/docs/protocols/experiment/resp_map.md) [(code)]() 
-
 - Data organisation:
   - [data_structure.md](https://github.com/juremaj/photostim_deve/blob/main/docs/data_structure.md)
+
+- Experiment:
+  - [spontaneous.md]() (session suffix `_a`) (code in longipy library)
+  - [photostim.md]() (session suffix `_b` to `_f`) [(code)]()
+  - [evoked.md]() (session suffix `_s`) (code in longipy library - TODO)
+  - [zstack.md]() (session suffix `_z`) (code in longipy library - TODO)
+  - [calibration.md]() (session suffix `_calib`) [(code)]()
+  - [treadmill.md]() (TODO: not yet integrated in data/code organisation) (code in longipy library - TODO)
