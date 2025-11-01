@@ -5,7 +5,7 @@ Photostim helper library and procols for using targetted 2p optogenetics during 
 
 ### Organisation of protocols:
 
-- Experiment organisation:
+- Organisation of experiment-analysis pipeline:
   - [data_structure.md](https://github.com/juremaj/photostim_deve/blob/main/docs/data_structure.md) - It's useful to read this before checking the other protocols or code, since it outlines the organisation of the experimental-analysis pipeline.
 
 - Experiment:
