@@ -73,7 +73,7 @@ def get_fov_resp(all_tiff_paths, all_frame, bsln_n_frames=10, resp_n_frames=10, 
 
     return fov_bsln, fov_resp, fov_diff
 
-def get_fov_resp_mn(fov_cond, all_point):
+def get_fov_resp_mn_md(fov_cond, all_point):
     """
     Get the mean fluorescence response for each point across all trials.
 
@@ -93,13 +93,15 @@ def get_fov_resp_mn(fov_cond, all_point):
     
     unique_point = np.unique(all_point)
     fov_cond_mn = np.zeros((len(unique_point), fov_cond.shape[1], fov_cond.shape[2]))
+    fov_cond_md = np.zeros((len(unique_point), fov_cond.shape[1], fov_cond.shape[2]))
 
     for point in unique_point:
         point = int(point)
         point_mask = all_point == point
         fov_cond_mn[point, :, :] = np.nanmean(fov_cond[point_mask, :, :], axis=0)
+        fov_cond_md[point, :, :] = np.nanmedian(fov_cond[point_mask, :, :], axis=0)
 
-    return fov_cond_mn
+    return fov_cond_mn, fov_cond_md
 
 def get_dist_dff(fov_map, all_point, all_coords_x, all_coords_y, fov_shape=(512, 512), n_dist_bins=724):
     """
