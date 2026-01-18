@@ -2,8 +2,22 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 def plot_xyoff(xoff, yoff, save_path=None):
+    # document using sphinx-style docstrings
     """
     Plot the x and y offsets from the suite2p motion correction.
+
+    Parameters:
+    ----------
+    xoff : np.ndarray
+        X offsets.
+    yoff : np.ndarray
+        Y offsets.
+    save_path : str or None
+        Path to save the plot. If None, the plot will not be saved.
+
+    Returns:
+    -------
+    None
     """
 
     plt.figure(figsize=(10, 1), dpi=300)
@@ -20,8 +34,24 @@ def plot_xyoff(xoff, yoff, save_path=None):
 def plot_protocol(all_frame, all_point, n_frames=36000, save_path=None):
     """
     Plot the photostimulation protocol.
+
+    Parameters:
+    ----------
+    all_frame : np.ndarray
+        Array of frame indices for each stimulation.
+    all_point : np.ndarray
+        Array of point indices for each stimulation.
+    n_frames : int
+        Total number of frames in the recording.
+    save_path : str or None
+        Path to save the plot. If None, the plot will not be saved.
+
+    Returns:
+    -------
+    None
     """
-    plt.figure(figsize=(10, 2), dpi=200)
+
+    plt.figure(figsize=(15, 2), dpi=300)
     for point_idx in np.unique(all_point):
         x = all_frame[all_point == point_idx]
         y = np.ones_like(x) * point_idx
@@ -39,6 +69,27 @@ def plot_protocol(all_frame, all_point, n_frames=36000, save_path=None):
 def plot_fov_diff_single(fov_diff, all_point, all_coords_x, all_coords_y, stim_idx, vlim=200, save_path=None):
     """
     Plot the difference image for a single stimulation trial.
+
+    Parameters:
+    ----------
+    fov_diff : np.ndarray
+        The difference image array with shape (n_stimulations, height, width).
+    all_point : np.ndarray
+        Array of point indices for each stimulation.
+    all_coords_x : np.ndarray
+        X coordinates of the stimulus point corresponding to each stimulation.
+    all_coords_y : np.ndarray
+        Y coordinates of the stimulus point corresponding to each stimulation.
+    stim_idx : int
+        Index of the stimulation trial to plot.
+    vlim : int
+        Saturation limits for visualizing the difference image.
+    save_path : str or None
+        Path to save the plot. If None, the plot will not be saved.
+
+    Returns:
+    -------
+    None
     """
     point = all_point[stim_idx]
     
@@ -56,6 +107,27 @@ def plot_fov_diff_single(fov_diff, all_point, all_coords_x, all_coords_y, stim_i
 def plot_fov_all_point(mn_image, all_point, all_coords_x, all_coords_y, txt_shift=(7, 7), save_path=None, sat_perc=99):
     """
     Plot the mean image map with the stimulation points.
+
+    Parameters:
+    ----------
+    mn_image : np.ndarray
+        The mean image of the field of view.
+    all_point : np.ndarray
+        Array of point indices for each stimulation.
+    all_coords_x : np.ndarray
+        X coordinates of the stimulus point corresponding to each stimulation.
+    all_coords_y : np.ndarray
+        Y coordinates of the stimulus point corresponding to each stimulation.
+    txt_shift : tuple
+        Shift for the text labels of the points.
+    save_path : str or None
+        Path to save the plot. If None, the plot will not be saved.
+    sat_perc : float
+        Saturation percentile for image display.
+
+    Returns:
+    -------
+    None
     """
     plt.figure(figsize=(10, 10))
     plt.imshow(mn_image, cmap='gray', vmin=0, vmax=np.percentile(mn_image, sat_perc))
@@ -71,6 +143,16 @@ def plot_fov_all_point(mn_image, all_point, all_coords_x, all_coords_y, txt_shif
 def zscore_act(act):
     """
     Z-score the rows of a 2D array for visualization.
+
+    Parameters:
+    ----------
+    act: np.ndarray
+        2D array with shape (n_rois, n_timepoints).
+
+    Returns:
+    -------
+    np.ndarray
+        Z-scored 2D array with the same shape as input.
     """
     act_mean = np.mean(act, axis=1, keepdims=True)
     act_std = np.std(act, axis=1, keepdims=True)
@@ -81,21 +163,22 @@ def plot_dist_dff(dist_diff_mn, n_points=40, dist_bins_xlim=362, dist_bins_xlim_
     """
     Plot the mean df/f as a function of distance from the stimulus point.
 
-    ------------------
-
     Parameters:
+    ----------
+    dist_diff_mn : np.ndarray
+        Each row corresponds to the mean of the pixel values for all pixels within a distance bin from a stimulus point. Rows correspond to different stimulus points.
+    n_points : int
+        Number of unique stimulus points in the experiment.
+    dist_bins_xlim : int
+        The x-axis limit for the main plot.
+    dist_bins_xlim_zoom : int
+        The x-axis limit for the zoomed-in plot.
+    save_path : str or None   
+        Path to save the plot. If None, the plot will not be saved.
 
-        dist_diff_mn : (np.ndarray)
-            Each row corresponds to the mean of the pixel values for all pixels within a distance bin from a stimulus point. Rows correspond to different stimulus points.
-        n_points : (int)
-            Number of unique stimulus points in the experiment.
-        dist_bins_xlim : (int)
-            The x-axis limit for the main plot.
-        dist_bins_xlim_zoom : (int)
-            The x-axis limit for the zoomed-in plot.
-        save_path : (str or None)
-            Path to save the plot. If None, the plot will not be saved.
-            
+    Returns:
+    -------
+    None    
     """
 
     fig, axs = plt.subplots(n_points+1, 2, figsize=(10, 2*(n_points+1)), gridspec_kw={'width_ratios': [5, 1]})
@@ -143,20 +226,25 @@ def plot_fov_map(fov_plot, all_coords_x, all_coords_y, vlim=200, save_path=None,
     Plot the fov_map with all stim points overlaid.
 
     Parameters:
-        fov_plot : (np.ndarray)
-            The response map with shape (n_stim_points, height, width) where each slice corresponds to a mean pixel response to a stimulus point.
-        all_coords_x : (np.ndarray)
-            X coordinates of the stimulus point corresponding to each stimulation
-        all_coords_y : (np.ndarray)
-            Y coordinates of the stimulus point corresponding to each stimulation
-        vlim : (int)
-            Saturation limits for visualizing fov_map.
-        n_rows : (int)
-            Number of rows in the subplot grid.
-        save_path : (str or None)
-            Path to save the plot. If None, the plot will not be saved.
-        zoomin_npix : (int)
-            Number of pixels to zoom in around the stimulus point. If None, no zooming is applied.
+    ----------
+    fov_plot : np.ndarray
+        The response map with shape (n_stim_points, height, width) where each slice corresponds to a mean pixel response to a stimulus point.
+    all_coords_x : np.ndarray
+        X coordinates of the stimulus point corresponding to each stimulation
+    all_coords_y : np.ndarray
+        Y coordinates of the stimulus point corresponding to each stimulation
+    vlim : int
+        Saturation limits for visualizing fov_map.
+    n_rows : int
+        Number of rows in the subplot grid.
+    save_path : str or None
+        Path to save the plot. If None, the plot will not be saved.
+    zoomin_npix : int or None
+        Number of pixels to zoom in around the stimulus point. If None, no zooming is applied.
+
+    Returns:
+    -------
+    None
     """
 
     n_cols = int(fov_plot.shape[0] / n_rows)
@@ -199,12 +287,21 @@ def plot_kernel_2d(k2d, fov_shape=(512, 512), n_dist_bins=724, vlim=200, save_pa
     Plot the 2D kernel.
     
     Parameters:
-        k2d : (np.ndarray)
-            The 2D kernel to plot.
-        fov_shape : (tuple)
-            Shape of the field of view (height, width).
-        vlim : (int)
-            Saturation limits for visualizing the kernel.
+    ----------
+    k2d : np.ndarray
+        The 2D kernel to plot.
+    fov_shape : tuple
+        Shape of the field of view (height, width).
+    vlim : int
+        Saturation limits for visualizing the kernel.
+    save_path : str or None
+        Path to save the plot. If None, the plot will not be saved.
+    zoomin_npix : int or None
+        Number of pixels to zoom in around the center. If None, no zooming is applied.
+
+    Returns:
+    -------
+    None
     """
 
     # Display the kernel
@@ -241,6 +338,29 @@ def plot_fov_map_avg(fov_map, all_coords_x, all_coords_y, all_point, all_point_s
     """
     Plot the average fluorescence map for the field of view (FOV) across all stimulation points, with markers for the stimulation points and their matched ROIs.
     This allows the user to visualise which parts of the FOV were stimulated/responded in a single plot.
+
+    Parameters:
+    ----------
+    fov_map : np.ndarray
+        The average fluorescence map for the FOV with shape (height, width).
+    all_coords_x : np.ndarray
+        X coordinates of all stimulation points.
+    all_coords_y : np.ndarray
+        Y coordinates of all stimulation points.
+    all_point : np.ndarray
+        Array of all stimulation points.
+    all_point_s2p_idx : np.ndarray
+        Array of all stimulation point to ROI indices.
+    meds : np.ndarray
+        Medians of the ROIs.
+    s2p_idxs : np.ndarray
+        Array of ROI indices.
+    txt_shift : int or tuple, optional
+        Shift for the text labels, by default 10
+    sat_perc_fov : float, optional
+        Saturation percentile for the FOV visualization, by default 99.9
+    save_path : str or None, optional
+        Path to save the plot. If None, the plot will not be saved, by default None
     """
 
     plt.figure(figsize=(10, 10))
@@ -266,51 +386,77 @@ def plot_fov_map_avg(fov_map, all_coords_x, all_coords_y, all_point, all_point_s
     if save_path is not None:
         plt.savefig(save_path, dpi=300, bbox_inches='tight')
 
-def plot_raster_matched_rois(f, all_point_s2p_idx, all_frame, save_path=None):
+def plot_raster_matched_rois(act, all_point_s2p_idx, all_frame, save_path=None):
     """
     Plot the raster of the matched ROIs to the stimulation points during the stimulation protocol (period).
+
+    Parameters:
+    ----------
+    act : np.ndarray
+        2D array of raw fluorescence activity with shape (n_rois, n_timepoints
+    all_point_s2p_idx : np.ndarray
+        Array of ROI indices matched to stimulation points.
+    all_frame : np.ndarray
+        Array of frame indices for each stimulation.
+    save_path : str or None
+        Path to save the plot. If None, the plot will not be saved.
+
+    Returns:
+    -------
+    None
     """
+    act_point_s2p = act[all_point_s2p_idx, :]
+    act_point_s2p_stim_epoch = act_point_s2p[:, all_frame[0]:all_frame[-1]]  # restrict to the stim period
 
-    # now plot the traces corresponding to the stimulus (of raw fluorescence)
-    f_point_s2p = f[all_point_s2p_idx, :]
-
-    plt.figure(figsize=(20, 2), dpi=300)
-    # zscore rows
-    # restrict to the stim period
-
-    f_point_s2p_stim_epoch = f_point_s2p[:, all_frame[0]:all_frame[-1]]  # restrict to the stim period
-
-    plt.imshow(zscore_act(f_point_s2p_stim_epoch), aspect='auto', cmap='gray_r', vmin=0, vmax=2)
+    plt.figure(figsize=(15, 2), dpi=300)
+    plt.imshow(zscore_act(act_point_s2p_stim_epoch), aspect='auto', cmap='gray_r', vmin=0, vmax=2)
     
     if save_path is not None:
         plt.savefig(save_path)
     
-def plot_raster_matched_rois_avg(f, all_point_s2p_idx, all_frame, all_point, save_path=None):
+def plot_raster_matched_rois_avg(act, all_point_s2p_idx, all_frame, all_point, save_path=None):
     """
     Plot the raster of the matched ROIs to the stimulation points during the stimulation protocol (period).
     Average across all repetitions of each stimulation point.
-    """
-    f_point_s2p = f[all_point_s2p_idx, :]
 
-    f_point_s2p_stim_epoch = f_point_s2p[:, all_frame[0]:all_frame[-1]]  # restrict to the stim period
+    Parameters:
+    ----------
+    act : np.ndarray
+        2D array of raw fluorescence activity with shape (n_rois, n_timepoints
+    all_point_s2p_idx : np.ndarray
+        Array of ROI indices matched to stimulation points.
+    all_frame : np.ndarray
+        Array of frame indices for each stimulation.
+    all_point : np.ndarray
+        Array of point indices for each stimulation.
+    save_path : str or None
+        Path to save the plot. If None, the plot will not be saved.
+
+    Returns:
+    -------
+    None
+    """
+    act_point_s2p = act[all_point_s2p_idx, :]
+
+    act_point_s2p_stim_epoch = act_point_s2p[:, all_frame[0]:all_frame[-1]]  # restrict to the stim period
 
     n_frames_repetition = int(all_frame[np.where(all_point==0)][1] - all_frame[np.where(all_point==0)][0] + 1)
     print(f"Number of frames per repetition: {n_frames_repetition}")
 
-    f_point_s2p_stim_epoch_mn = np.zeros((f_point_s2p_stim_epoch.shape[0], n_frames_repetition))
+    act_point_s2p_stim_epoch_mn = np.zeros((act_point_s2p_stim_epoch.shape[0], n_frames_repetition))
 
     offset = 0
     for i in range(sum(all_point == 0)-1):
         mask = np.arange(offset, offset + n_frames_repetition)
-        f_point_s2p_stim_epoch_mn += f_point_s2p_stim_epoch[:, mask]
+        act_point_s2p_stim_epoch_mn += act_point_s2p_stim_epoch[:, mask]
         offset += n_frames_repetition
 
 
-    f_point_s2p_stim_epoch_mn /= sum(all_point == 0)
+    act_point_s2p_stim_epoch_mn /= sum(all_point == 0)
 
 
     plt.figure(figsize=(2, 2), dpi=300)
-    plt.imshow(zscore_act(f_point_s2p_stim_epoch_mn), aspect='auto', cmap='gray_r', vmin=0, vmax=5, interpolation='nearest')
+    plt.imshow(zscore_act(act_point_s2p_stim_epoch_mn), aspect='auto', cmap='gray_r', vmin=0, vmax=5, interpolation='nearest')
 
     if save_path is not None:
         plt.savefig(save_path)
@@ -318,6 +464,25 @@ def plot_raster_matched_rois_avg(f, all_point_s2p_idx, all_frame, all_point, sav
 def plot_response_matched_rois(s2p_resp, all_point_s2p_idx, n_points, peristim_wind, n_rows_fov=10, save_path=None):
     """
     Plot the responses of matched ROIs to the stimulation points during the stimulation protocol. Each trial is shown as a grey line, the mean across trials is shown as a blue line.
+
+    Parameters:
+    ----------
+    s2p_resp : np.ndarray
+        3D array of shape (n_points, n_repetitions, n_timepoints) containing the responses of the matched ROIs to the stimulation points.
+    all_point_s2p_idx : np.ndarray
+        Array of ROI indices matched to stimulation points.
+    n_points : int
+        Number of unique stimulation points.
+    peristim_wind : tuple
+        Time window around the stimulation (start, end) in frames.
+    n_rows_fov : int
+        Number of columns in the subplot grid.
+    save_path : str or None
+        Path to save the plot. If None, the plot will not be saved.
+
+    Returns:
+    -------
+    None
     """
     
     n_cols = n_rows_fov
@@ -368,6 +533,27 @@ def plot_response_matched_rois_heatmap(s2p_resp, all_point_s2p_idx, n_points, pe
     """
     Plot the responses of matched ROIs to the stimulation points during the stimulation protocol. Each trial is shown as a line of a heatmap.
     Plotting the same data as plot_response_matched_rois but as a heatmap.
+
+    Parameters:
+    ----------
+    s2p_resp : np.ndarray
+        3D array of shape (n_points, n_repetitions, n_timepoints) containing the responses of the matched ROIs to the stimulation points.
+    all_point_s2p_idx : np.ndarray
+        Array of ROI indices matched to stimulation points.
+    n_points : int
+        Number of unique stimulation points.
+    peristim_wind : tuple
+        Time window around the stimulation (start, end) in frames.
+    n_rows_fov : int
+        Number of columns in the subplot grid.
+    vlim_std : float
+        Number of standard deviations for setting the color limits of the heatmap.
+    save_path : str or None
+        Path to save the plot. If None, the plot will not be saved.
+
+    Returns:
+    -------
+    None
     """
 
     # now the same but with the diferent visualsiation
@@ -419,6 +605,20 @@ def plot_response_matched_rois_heatmap(s2p_resp, all_point_s2p_idx, n_points, pe
 def plot_response_matched_rois_avg(s2p_resp, peristim_wind=[10, 30], vlim_std=8,save_path=None):
     """
     Plot the summary responses for all ROIs averaged across all trial repetitions for that ROI. Shown as a heatmap.
+
+    Parameters:
+    s2p_resp : np.ndarray
+        3D array of shape (n_points, n_repetitions, n_timepoints) containing the responses of the matched ROIs to the stimulation points.
+    peristim_wind : tuple
+        Time window around the stimulation (start, end) in frames.
+    vlim_std : float
+        Number of standard deviations for setting the color limits of the heatmap.
+    save_path : str or None
+        Path to save the plot. If None, the plot will not be saved.
+        
+    Returns:
+    -------
+    None
     """
     s2p_resp_mn = np.mean(s2p_resp, axis=1)
     plt.figure(figsize=(2, 2), dpi=300)
