@@ -3,7 +3,7 @@ See `notebooks/calibration_microscope/z_align_psf.ipynb` for associated notebook
 
 ## Purpose
 
-To measure and document the imaging ('pockels') and stimulation ('uncaging') position and shape of the PSF in Z at different wavelengths on the Bruker Ultima two-photon microscope using a power meter. This is needeed to know the Z resolution as well as to account for the z shift when using different laser wavelengths.
+To measure and document the imaging ('tunable') and stimulation ('1040nm') position and shape of the PSF in Z at different wavelengths on the Bruker Ultima two-photon microscope using a power meter. This is needeed to know the Z resolution as well as to account for the z shift when using different laser wavelengths.
 
 ## Materials
 
@@ -15,7 +15,7 @@ To measure and document the imaging ('pockels') and stimulation ('uncaging') pos
 
 ## Protocol
 
-Measurement for imaging/'pockels' laser:
+Measurement for imaging/'tunable' laser:
 1) Follow the normal microscope on procedure (wait at least 30 min for laser to stabilise if it was turned off before)
 2) Position the rhodamine slide under the microscope with the coated side facing down, making sure the slide is as perpendicular with respect to the objective as possible.
 3) Add a few drops of water and immerse the objective by moving down in Z
@@ -25,11 +25,12 @@ Measurement for imaging/'pockels' laser:
 7) Usually (in photostim) we would do these measurements at 830 nm (isosbestic gcamp), 920 nm (Ca2+ bound gcamp, slightly blue shifted), 1100 nm (mScarlet to localise opsin).
 8) Choose the first wavelength to measure and set the paramteres of the z-stack:
    - a) Center the rhodamine slide around the central slice of the z-stack
-   - b) Make sure the z step is at the order / resolution at which you want to measure the PSF (a step size of 0.5 um is a good value, giving ~ 20 samples at FWHM if psf is ~ 10 um FWHM)
+   - b) Make sure the z step is at the order / resolution at which you want to measure the PSF (IMPORTANT NOTE: If you want to use the associated scripts without modifying anything, use a step size of 0.5 um, giving ~ 20 samples at FWHM if psf is ~ 10 um FWHM)
    - c) Make sure that the top and bottom slices have enough range to capture all wavelengths despite the shifts (+- 50 um should be fine)
    - d) When doing photostim measurements it is better to use z-focus (mechanical) to be consistent (since ETL can not be used to change the z position of the photostim beam).
-   - e) In terms of detection it's best to use the red PMT - it will have the highest signal
-   - f) create a folder where all zstacks will be stored, the naming convention is `YYYY-MM-DD_zpsf`
+   - e) In terms of detection it's best to use the red PMT - it will have the highest signal.
+   - f) Set the laser power and gain (this needs to be done each time you change the laser wavelength). If you want to have less noise the PMT gain can be decreased quite substantially (e. g. 500) and laser power incresed accordingly to have a good signal (just make sure to not bleach the rhodamine). Also whenver you change the wavelength make sure that the PMTs aren't saturating at any of the slices of the zstack, if they are then lower the laser power or the PMT gain.
+   - f) create a folder where all zstacks will be stored, the naming convention is `YYYY-MM-DD_zpsf`, and each subfolder will correspond to a condition, for example `830nm`, `920nm`, `1100nm` and `1040nm_stim`.
 10) Once this is set up proceed to record a z-stack at each laser wavelength by performing the following steps for each wavelength, while making sure to not move the sample or the z alignment of the microscope during the procedure:
   - a) Set the laser wavelength to the desired one and wait for the laser to be mode locked
   - b) Navigate to the the slice in the z stack volume with the highest brightness and make sure it is not saturating or too dim by adjusting the laser (pockels) power
@@ -39,17 +40,16 @@ Measurement for imaging/'pockels' laser:
 11) If measuring the shift between the imaging and stim laser make sure to again not move the z and proceed to the second part of the protocol.
 12) If that's all the measurments then transfer the data to the server in `data_jm/data_raw/calibration/YYYY-MM-DD_zpsf`
 
-Measurement for photostim/'uncaging' laser (optional):
+Measurement for photostim/'1040nm' laser (optional):
 1) Ideally this is done as a follow-up to measuring the imaging laser, so follow steps 1) - 11) above first
 2) Keep the same z-stack parameters as before to have the recordings co-registered (making sure to use z focus since ETL does not change photostim focus).
-3) Turn off the 
+3) Turn off the 'tunable' laser by setting it to 0 to remove any signal coming from that.
 4) The issue here is that we do not scan with the photostim laser, so we need to do a 'hack' that will allow us to estimate the PSF based on the stim 'artefact' - e. g. descanned light that reaches the PMT when we are shining photostim laser onto the rhodamine slide. We can do this by performing the following steps:
     - a) Open 'Mark points' the part of the GUI where photostim protocols are defined
     - b) Define a large spiral in the center of the FOV, for example 64x64 um and many spiral rotations, for example 20
     - c) Click 'Run protocol' and move in z to the part where the stim artefact is the largest and again adjust the laser power (this time using the polariser - see `power.md` protocol) in a way that the PMT is not saturating, but that the signal is strong enough). Note: You might see some striping artefacts which I think are due to the spiral scanning but am not 100% of their origin.
     - d) Check the duration required for Z-stack acquisition and set the duration of this spiral to be larger than that (to ensure the spiral is being continuously scanned as the microscope moves in z)
-    - e) Click the 'Run protocol' button in 'Mark points'
-    - f) Once you hear the photostim shutter open run the Z-stack acquisition, saving the zstack in the same folder as the zstacks for the imaging laser, ideally with the name `1040nm_stim` (full path: `YYYY-MM-DD_zpsf/1040nm_stim`)
+    - e) Make sure to set the synchronisation between the Z-stack acquisition and the 'Mark points' by setting it to 'current'. Also st the path for saving the zstack in the same folder as the zstacks for the imaging laser, ideally with the name `1040nm_stim` (full path: `YYYY-MM-DD_zpsf/1040nm_stim`)
 5) If that's all the measurments then transfer the data to the server in `data_jm/data_raw/calibration/YYYY-MM-DD_zpsf`
 
 
