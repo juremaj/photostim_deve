@@ -1,5 +1,5 @@
 # stim_timing.md (Stimulation timing measurement)
-See `calibration_notebooks/stim_timing.ipynb` for associated notebook.
+See `notebooks/calibration_microscope/stim_timing.ipynb` for associated notebook.
 
 1) Put rodamine slide in focus as in other protocols (e. g. measuring PSF)
 2) Make sure that everything is ok with the stim laser (as in other protocols):
