@@ -34,7 +34,7 @@ Data and plotting:
 1) Export the notes to a `.csv` file and transfer the file to `utils/calibration_power/YYYY-MM-DD_pockels.csv` where YYYY - year, MM - month, DD - day. In Excel this can be done by going to `File` > `Save as...`, then set the appropriate title (`YYYY-MM-DD_pockels.csv`) and under `File format:` select `CSV UTF8 (Comma-delimited) (.csv)`.
 2) You can then simply run the Jupyter notebook associated with this protocol (`calibration_notebooks/power.ipynb`), the only thing that needs to be changed is a single line defining the ID of the calibration (e. g. `2026-01-21_pockels`)
 3) This will generate a calibration curve saved in `photostim_deve/utils/calibration_power` as a `.png` file with the same name as the data (e. g. `2026-01-21_pockels.png`). See below how this plot should look:
-<img src="/docs/protocols/media/2025-10-10_pockels.png" width="50%">
+<img src="/utils/calibration_power/2026-01-21_pockels.png" width="50%">
 4) If doing photostim calibration then follow 2) below and add those values into the table as well, for example as a `1040nm_stim` column.
 4) After the calibration it's also nice to print the graph and tape it somewhere near the microscope (and if you can also push it to the GitHub repo so we have a digital backup)
 
