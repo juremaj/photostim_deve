@@ -1,0 +1,27 @@
+fov_imsize_onedim: 1024  # size of the FOV in pixels (assumed square)
+s2p_imsize_onedim: 512  # size used for Suite2p processing
+
+n_stim_cell: 45 # how many 'cell' points were stimulated
+n_stim_ctrl: 5 # how many 'control' points were stimulated  
+
+session_reg_idx: 0  # index of the session used as reference for FOV registration across sessions (usually should be 0 for the first session)
+
+force_recompute: False  # whether to force recomputation of motion correction and segmentation even if files already exist
+
+# motion correction
+run_motcorr: True
+nimg_init: 128  # number of frames used to compute the reference image for motion correction
+
+# choosing Suite2p ROIs to consider for matching
+filt_by: 't2p'  # filter Suite2p ROIs by 't2p' (track2p matching) or 'iscell_cell_prob' or 'iscell_manual_cur'
+track2p_dirname: 'track2p_a' # this applies only if above filt_by is 't2p' (name of the track2p directory to get the matching indices from)
+cell_prob_thr: 0.5 # this applies only if above filt_by is 'iscell_cell_prob' (threshold for cell probability to consider an ROI as a cell based on s2p classifier)
+
+# parameters used for matching
+max_dist_px: 7 # hard threshold on distance in pixels for matching points between two sets of coordinates
+
+# session type (either '_a' - spontaneous or '_s' - evoked) 
+session_type: '_a' # TODO: PAY ATTENTION FOR NOW THAT IT MATCHES THE track2p_dirname!!!
+
+# plotting parameters
+sat_perc: 99.9

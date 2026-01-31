@@ -7,7 +7,7 @@ import os
 from skimage.measure import regionprops
 
 
-def segment_fov_cpsam(all_fov_image, diameter=None, flow_threshold=0.4, cellprob_threshold=0.0, resample=True, normalize=True, save_path=None, force_recompute=False):
+def segment_fov_cpsam(all_fov_image, diameter=None, flow_threshold=0.4, cellprob_threshold=0.0, resample=True, normalize=True, save_path=None, force_recompute=False, segment_only=None):
     '''
     Segment all FOV images using Cellpose 'cpsam' pretrained model.
     
@@ -28,6 +28,10 @@ def segment_fov_cpsam(all_fov_image, diameter=None, flow_threshold=0.4, cellprob
         Whether to normalize the image intensity before segmentation.
     force_recompute: bool
         If True, forces recomputation of segmentation even if segmentation keys already exist in all_fov_image.
+    save_path: str or None
+        Path to save the segmentation results. If None, results are not saved.
+    segment_only: list or None
+        List of wavelength keys to segment. If None, all keys are segmented.
 
     Returns:
     -------
@@ -51,6 +55,10 @@ def segment_fov_cpsam(all_fov_image, diameter=None, flow_threshold=0.4, cellprob
     all_fov_image_seg = deepcopy(all_fov_image)
 
     for wl in tqdm(all_fov_image.keys()):
+
+        # if segment_only is specified, skip wavelengths not in the list
+        if segment_only is not None and wl not in segment_only:
+            continue
 
         # if the key has '_mn' in it, skip (these are for plotting only when comparing motion correction)
         if '_mn' in wl:

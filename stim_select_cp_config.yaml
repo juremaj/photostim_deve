@@ -1,0 +1,46 @@
+session_type: '_a' 
+
+fov_imsize_onedim: 1024  # size of the FOV in pixels (assumed square)
+s2p_imsize_onedim: 512  # size used for Suite2p processing
+
+n_stim_cell: 45 # how many 'cell' points were stimulated
+
+session_reg_idx: 0  # index of the session used as reference for FOV registration across sessions (usually should be 0 for the first session)
+
+force_recompute: False  # whether to force recomputation of motion correction and segmentation even if files already exist
+
+# motion correction
+run_motcorr: True
+nimg_init: 128  # number of frames used to compute the reference image for motion correction
+
+# plotting parameters
+sat_perc: 99.9
+
+use_seg: 'cp'
+manually_curate: True
+
+n_stim_cell: 45 # number of cells to choose for stimulation
+seed: 123
+
+edge_excl: 0.10 # exclude edges when choosing cells (due to brain growth, motion correction, etc) (fraction of image size to exclude on each side (0.1 = 10%))
+
+# paths to templates
+mp_temp_path: 'utils/templates/MarkPoints_template.xml'
+gpl_temp_path: 'utils/templates/galvo_point_list_template.gpl'
+
+# MarkPoints parameters (.xml file)
+SpiralWidth: '0.0199325637636341'     # as proportion of the FOV
+SpiralHeight: '0.0199325637636341'    # as proportion of the FOV
+SpiralSizeInMicrons: '15.0000000000001'        # in microns
+
+# Galvo point list parameters (.gpl file) - These should usually not be changed!
+ActivityType: "MarkPoints" 
+UncagingLaser: "Uncaging" 
+UncagingLaserPower: "1000" 
+Duration: "50" 
+IsSpiral: "True" 
+SpiralSize: "0.110870362837845" 
+SpiralRevolutions: "7" 
+Z: "807.424999999999"
+X_lim: 2.79639654844993 # determined empirically by putting points in the corners of the FOV (I think this is voltage control to the galvo)
+Y_lim: 3.09924006097119 # determined empirically by putting points in the corners of the FOV (I think this is voltage control to the galvo)

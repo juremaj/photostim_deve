@@ -48,7 +48,7 @@ def get_all_fov_image(subject_path, session_type='_a', session_reg_idx=0,run_mot
     for session_fov_dir in all_session_fov_dir:
 
         # 0) if corresponding images area already computed, skip and just load to dictionary
-        if run_motcorr:
+        if run_motcorr and not force_recompute:
             if os.path.exists(os.path.join(subject_path, session_dir, 'fov', f'{session_fov_dir}_motcorr_mn.npy')) and not force_recompute:
                 print(f"Motion corrected image for {session_fov_dir} already exists, skipping...")
                 all_fov_image[session_fov_dir + '_mn'] = np.load(os.path.join(subject_path, session_dir, 'fov', f'{session_fov_dir}_mn.npy'))
