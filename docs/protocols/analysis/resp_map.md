@@ -1,4 +1,4 @@
-# resp_map.md ()
+# resp_map.md
 See `notebooks/resp_map.ipynb` for associated notebook.
 
 This notebook is a **helper / exploratory analysis script** to visualise and quantify photostimulation-evoked responses at the FOV and ROI level after Suite2p processing. It links **MarkPoints stimulation metadata**, **motion-corrected TIFF data**, and **Suite2p outputs** to produce response maps, distance-dependent analyses, kernels, and ROI-aligned activity plots.
