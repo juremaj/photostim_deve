@@ -1,4 +1,4 @@
-# match_stim_fov_t2p.md ()
+# match_stim_fov_t2p.md
 See `notebooks/match_stim_fov_t2p.ipynb` for associated notebook.
 
 Because of the experimental pipeline the suite2p/track2p data (referred to as `t2p`) is not aligned to the opsin expression data (`fov`) / Bruker photostim metadata (`stim`) (the latter two are aligned, since the `stim` coordinates are chosen based on the segmentation of the `fov`).
