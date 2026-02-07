@@ -1,4 +1,5 @@
 session_type: '_a' 
+win_data_proc_path: 'Z:\data_proc' # set to None and use symbolic links if using macOS or linux (if using Windows set the path to the 'data_proc' (for example 'Z:\data_proc')
 
 fov_imsize_onedim: 1024  # size of the FOV in pixels (assumed square)
 s2p_imsize_onedim: 512  # size used for Suite2p processing
