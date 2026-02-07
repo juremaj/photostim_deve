@@ -9,8 +9,8 @@ Photostim helper library and procols for using targetted 2p optogenetics during 
   - [data_structure.md](https://github.com/juremaj/photostim_deve/blob/main/docs/data_structure.md) - It's useful to read this before checking the other protocols or code, since it outlines the organisation of the experimental-analysis pipeline.
 
 - Experiment:
-  - [spontaneous.md](https://github.com/juremaj/photostim_deve/blob/main/docs/protocols/experiment/spontaneous.md) (session suffix `_a`) (code in longipy library)
-  - [photostim.md](https://github.com/juremaj/photostim_deve/blob/main/docs/protocols/experiment/photostim.md) (session suffix `_b` to `_f`) [(code)]()
+  - [spontaneous.md](https://github.com/juremaj/photostim_deve/blob/main/docs/protocols/experiment/spontaneous.md) (session suffix `_a`) (TODO: update based on new laser control) (code in longipy library)
+  - [photostim.md](https://github.com/juremaj/photostim_deve/blob/main/docs/protocols/experiment/photostim.md) (session suffix `_b` to `_f`) [(code)](TODO: update based on new laser control)
   - [evoked.md](https://github.com/juremaj/photostim_deve/blob/main/docs/protocols/experiment/evoked.md) (session suffix `_s`) (code in longipy library - TODO)
   - [zstack.md](https://github.com/juremaj/photostim_deve/blob/main/docs/protocols/experiment/zstack.md) (session suffix `_z`) (code in longipy library - TODO)
   - [calibration.md](https://github.com/juremaj/photostim_deve/blob/main/docs/protocols/experiment/calibration.md) (session suffix `_calib`) [(code)]()
