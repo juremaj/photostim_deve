@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-def plot_motcorr_comparison(all_fov_image, sat_perc=99.99, crop=(64, 64)):
+def plot_motcorr_comparison(all_fov_image, sat_perc=99.99, crop=(64, 64), save_path=None):
 
     """
     Plots comparison between original mean image and motion corrected mean image for each FOV.
@@ -14,6 +14,8 @@ def plot_motcorr_comparison(all_fov_image, sat_perc=99.99, crop=(64, 64)):
         Saturation percentile for image display. Default is 99.99.
     crop: tuple
         Tuple indicating the crop size (height, width) around the center of the image. Default is (64, 64).
+    save_path: str
+        Path to save the generated plots. If None, plots will be displayed but not saved.
 
     Returns:
     -------
@@ -39,9 +41,11 @@ def plot_motcorr_comparison(all_fov_image, sat_perc=99.99, crop=(64, 64)):
         axs[1].imshow(fov_image_motcorr_mn_crop, cmap='gray', vmin=np.percentile(fov_image_motcorr_mn, 100 - sat_perc), vmax=np.percentile(fov_image_motcorr_mn, sat_perc))
         axs[1].set_title('Motion corrected mean image (cropped)')
         axs[1].axis('off')
+        if save_path is not None:
+            plt.savefig(f'{save_path}/motcorr_{session_fov_dir}.png', bbox_inches='tight', dpi=300)
         plt.show()
 
-def plot_segmentation_overlay_dict(all_fov_image_seg, sat_perc=99.99):
+def plot_segmentation_overlay_dict(all_fov_image_seg, sat_perc=99.99, save_path=None):
     '''
     Plot segmentation overlay for all FOVs in the all_fov_image_seg dictionary.
 
@@ -51,6 +55,8 @@ def plot_segmentation_overlay_dict(all_fov_image_seg, sat_perc=99.99):
         Dictionary containing images and segmentation masks for all FOVs.
     sat_perc: float
         Saturation percentile for image display.
+    save_path: str
+        Path to save the generated plots. If None, plots will be displayed but not saved.
         
     Returns:
     -------
@@ -77,7 +83,11 @@ def plot_segmentation_overlay_dict(all_fov_image_seg, sat_perc=99.99):
 
             count+=1
 
-def plot_image_seg_xy_stim(image, x_stim=None, y_stim=None, segmentation=None, sat_perc=99.9, fov_s2p_px_fact=2):
+    if save_path is not None:
+        plt.savefig(save_path, bbox_inches='tight', dpi=300)
+    plt.show()
+
+def plot_image_seg_xy_stim(image, x_stim=None, y_stim=None, segmentation=None, sat_perc=99.9, fov_s2p_px_fact=2, save_path=None):
     """
     Plots the given image with optional stimulation points and segmentation overlay.
 
@@ -95,6 +105,8 @@ def plot_image_seg_xy_stim(image, x_stim=None, y_stim=None, segmentation=None, s
         Saturation percentile for contrast adjustment (default is 99.9).
     fov_s2p_px_fact : float, optional
         Scaling factor from Suite2p pixels to FOV pixels (default is 2).
+    save_path : str, optional
+        Path to save the generated plot. If None, the plot will be displayed but not saved
     
     Returns:
     -------
@@ -111,9 +123,11 @@ def plot_image_seg_xy_stim(image, x_stim=None, y_stim=None, segmentation=None, s
         plt.contour(segmentation, colors='C0', linewidths=0.5)
     plt.title('Stimulation points on FOV image')
     plt.axis('off')
+    if save_path is not None:
+        plt.savefig(save_path, bbox_inches='tight', dpi=300)
     plt.show()
 
-def plot_keypoints_scatter(x_s2p, y_s2p, x_fov, y_fov, x_fov_reg=None, y_fov_reg=None):
+def plot_keypoints_scatter(x_s2p, y_s2p, x_fov, y_fov, x_fov_reg=None, y_fov_reg=None, save_path=None):
     """
     Plot scatter of keypoints from s2p and fov images (including optionally registered fov keypoints).
 
@@ -131,6 +145,8 @@ def plot_keypoints_scatter(x_s2p, y_s2p, x_fov, y_fov, x_fov_reg=None, y_fov_reg
         X coordinates of registered fov keypoints.
     y_fov_reg: np.ndarray
         Y coordinates of registered fov keypoints.
+    save_path: str
+        Path to save the generated plot. If None, the plot will be displayed but not saved
         
     Returns:
     -------
@@ -147,4 +163,6 @@ def plot_keypoints_scatter(x_s2p, y_s2p, x_fov, y_fov, x_fov_reg=None, y_fov_reg
     plt.title('Keypoints scatter plot')
     plt.legend()
     plt.axis('equal')
+    if save_path is not None:
+        plt.savefig(save_path, bbox_inches='tight', dpi=300)
     plt.show()
