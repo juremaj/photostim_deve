@@ -17,9 +17,9 @@ Photostim helper library and procols for using targetted 2p optogenetics during 
   - [treadmill.md](https://github.com/juremaj/photostim_deve/blob/main/docs/protocols/experiment/treadmill.md) (TODO: not yet integrated in data/code organisation) (code in longipy library - TODO)
 
 - Analysis:
-  - [stim_select_cp.md]()[(code)](https://github.com/juremaj/photostim_deve/blob/main/stim_select_cp.ipynb)
-  - [match_stim_fov_t2p.md]()[(code)](https://github.com/juremaj/photostim_deve/blob/main/match_stim_fov_t2p.ipynb)
-  - [resp_map.md][(code)][(code)](https://github.com/juremaj/photostim_deve/blob/main/resp_map.ipynb)
+  - [stim_select_cp.md]() [(code)](https://github.com/juremaj/photostim_deve/blob/main/stim_select_cp.ipynb)
+  - [match_stim_fov_t2p.md]() [(code)](https://github.com/juremaj/photostim_deve/blob/main/match_stim_fov_t2p.ipynb)
+  - [resp_map.md] [(code)](https://github.com/juremaj/photostim_deve/blob/main/resp_map.ipynb)
   - [...]
 
 Each of these (except burn_spots.md) will be associated with a python notebook of the same name to plot the results.
