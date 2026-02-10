@@ -17,7 +17,16 @@ Photostim helper library and procols for using targetted 2p optogenetics during 
   - [treadmill.md](https://github.com/juremaj/photostim_deve/blob/main/docs/protocols/experiment/treadmill.md) (TODO: not yet integrated in data/code organisation) (code in longipy library - TODO)
 
 Example pipeline:
-![photostim_deve_pipeline](https://github.com/user-attachments/assets/7f50efc0-3c43-4fa1-aa09-5cb7fa62c7fb)
+![photostim_pipeline_schematic](https://github.com/user-attachments/assets/cff6dcc8-7c3a-4f82-a822-82ce50dfb354)
+
+
+Table representation:
+| Session Type | P8 | P9 | P10 | P11 | P12 | P13 | P14 |
+|--------------|----|----|-----|-----|-----|-----|-----|
+| `_a`         | 1  | 1  | 1   | 1   | 1   | 1   | 1   |
+| `_s`         | 2  | 2  | 2   | 2   | 2   | 2   | 2   |
+| `_b` – `_f`  | 4  | 3  |     |     |     |     | 3   |
+| `_z`         |    |    |     |     |     |     | 4   |
 
 - Analysis:
   - [stim_select_cp.md](https://github.com/juremaj/photostim_deve/blob/main/docs/protocols/analysis/match_stim_fov_t2p.md) [(code)](https://github.com/juremaj/photostim_deve/blob/main/stim_select_cp.ipynb) - Choose which cells to stimulate based on Cellpose segmentation of opsin expression.
