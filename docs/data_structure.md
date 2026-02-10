@@ -67,6 +67,9 @@ And for example if we want to do the calibration first (before photostim); check
 | `_z`         |    |    |     |     |     |     | 4   |
 | `_calib`     | 3  |    |     |     |     |     |     |
 
+A more visual way to represent this is based on this 'analysis-centered' schematic (note: here the order in which the experiments are done is not explicitly shown, but it is showing the ex-vivo procedure).
+![photostim_pipeline_schematic](https://github.com/user-attachments/assets/cff6dcc8-7c3a-4f82-a822-82ce50dfb354)
+
 Now that we have a basic idea of the modular structure we can look a bit into how this structure is reflected in the folder structure of the data, first starting with raw data.
 
 ---
