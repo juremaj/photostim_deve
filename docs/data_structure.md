@@ -63,7 +63,7 @@ And for example if we want to do the calibration first (before photostim); check
 |--------------|----|----|-----|-----|-----|-----|-----|
 | `_a`         | 1  | 1  | 1   | 1   | 1   | 1   | 1   |
 | `_s`         | 2  | 2  | 2   | 2   | 2   | 2   | 2   |
-| `_b` – `_f`  | 4  |    |     |     |     |     | 3   |
+| `_b` – `_f`  | 4  | 3  |     |     |     |     | 3   |
 | `_z`         |    |    |     |     |     |     | 4   |
 | `_calib`     | 3  |    |     |     |     |     |     |
 
