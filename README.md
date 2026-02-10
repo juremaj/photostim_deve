@@ -16,6 +16,9 @@ Photostim helper library and procols for using targetted 2p optogenetics during 
   - [calibration.md](https://github.com/juremaj/photostim_deve/blob/main/docs/protocols/experiment/calibration.md) (session suffix `_calib`) [(code)]()
   - [treadmill.md](https://github.com/juremaj/photostim_deve/blob/main/docs/protocols/experiment/treadmill.md) (TODO: not yet integrated in data/code organisation) (code in longipy library - TODO)
 
+Example pipeline:
+![photostim_deve_pipeline](https://github.com/user-attachments/assets/7f50efc0-3c43-4fa1-aa09-5cb7fa62c7fb)
+
 - Analysis:
   - [stim_select_cp.md](https://github.com/juremaj/photostim_deve/blob/main/docs/protocols/analysis/match_stim_fov_t2p.md) [(code)](https://github.com/juremaj/photostim_deve/blob/main/stim_select_cp.ipynb) - Choose which cells to stimulate based on Cellpose segmentation of opsin expression.
   - [match_stim_fov_t2p.md](https://github.com/juremaj/photostim_deve/blob/main/docs/protocols/analysis/resp_map.md) [(code)](https://github.com/juremaj/photostim_deve/blob/main/match_stim_fov_t2p.ipynb) - Match the stimulation points, opsin expression and suite2p/track2p.
