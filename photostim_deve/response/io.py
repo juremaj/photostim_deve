@@ -193,3 +193,47 @@ def get_all_tiff_paths(tiff_dir):
     all_tiff_paths = [all_tiff_paths[i] for i in sort_indices]
 
     return all_tiff_paths
+
+def parse_evoked_protocol_csv(session_path, csv_save_path=None, frame_period=0.033602476):
+    """
+    Convert the evoked stim protcol data (.npy files) to a list of stimulation times (in seconds), corresponding frame index and evoked stim type index (currently all the same, due to a single stim time) for each stimulation.
+    Also saves the stimulation protocol as a .csv file for easier loading in the future.
+
+    Parameters:
+    ----------
+    session_path : str 
+        Path to the session directory containing the .npy files with stimulation protocol data. 
+    csv_save_path : str 
+        Path to save (or load from) the converted stimulation protocol as a .csv file.
+    frame_period : float
+        Exact frame period from metadata used to convert from time to frame index. Default is 0.033602476 (for '30Hz' acquisition).
+    
+    Returns:
+    -------
+    stim_times : list
+        A list of stimulation times, corresponding frame index and evoked stim type index for each stimulation.
+    stim_frames : list
+        A list of frame indices for each stimulation.
+    stim_type : list
+        Evoked stim type index corresponding to each stimulation (currently all the same, due to a single stim time). (Equivalent of 'stim_points' in the 'resp_photostim' protocol).
+
+    """
+    
+    stim_frames = np.load(os.path.join(session_path, 'stim_times.npy')) # NOTE: here the 'stim_times.npy' file actually contains the frame indices of the stim times, not the stim times in seconds. 
+    stim_times = stim_frames * frame_period # convert from frame index to time in seconds
+    stim_type = np.load(os.path.join(session_path, 'stim_protocol.npy'))
+
+    print(f"Loaded stim_times.npy with shape {stim_times.shape} and stim_protocol.npy with shape {stim_type.shape}")
+    print(f'stim_protocol unique values: {np.unique(stim_type)}')
+    print(f'stim_times values: {stim_times}')
+
+    if csv_save_path is not None:
+        stim_df = pd.DataFrame({
+            'time': stim_times,
+            'frame': stim_frames,
+            'type': stim_type
+        })
+        stim_df.to_csv(csv_save_path, index=False)
+        print(f"Saved stimulation data to {csv_save_path}")
+
+    return stim_times, stim_frames, stim_type

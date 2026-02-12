@@ -166,3 +166,37 @@ def plot_keypoints_scatter(x_s2p, y_s2p, x_fov, y_fov, x_fov_reg=None, y_fov_reg
     if save_path is not None:
         plt.savefig(save_path, bbox_inches='tight', dpi=300)
     plt.show()
+
+def plot_resp_imgs(resp_bsln_img, resp_resp_img, resp_diff_img, j=None, l=None):
+    """
+    Plot the baseline, response and difference images side by side.
+
+    Parameters:   
+    ----------
+    resp_bsln_img : 2D array
+        The baseline response image (e.g., mean or median of the frames in the baseline window).
+    resp_resp_img : 2D array
+        The response image (e.g., mean or median of the frames in the response window).
+    resp_diff_img : 2D array
+        The difference image (e.g., response image - baseline image).
+    j : int or None
+        Stimulation type index (optional, for title).
+    l : int or None
+        Stimulation trial index (optional, for title).
+
+    Returns:
+    -------
+    None
+    """
+    
+    fig, axs = plt.subplots(1, 3, figsize=(15, 5))
+    
+    axs[0].imshow(resp_bsln_img, vmin=0, vmax=800*4, cmap='Greys_r')
+    axs[0].axis('off')
+    axs[1].imshow(resp_resp_img, vmin=0, vmax=800*4, cmap='Greys_r')
+    axs[1].axis('off')
+    axs[2].imshow(resp_diff_img, vmin=-400, vmax=400, cmap='bwr')
+    axs[2].axis('off')
+
+    plt.suptitle(f's{j}, r{l}') if j is not None and l is not None else None
+    plt.show()
