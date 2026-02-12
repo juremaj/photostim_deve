@@ -1,0 +1,25 @@
+# TODO: Synchronise with the notebook once done
+channel: 2
+plane: 0
+frame_period: 0.033602476  # metadata-derived frame period for 30Hz acquisition
+fov_shape: [512, 512]      # shape of the FOV in pixels
+
+# baseline and response parameters
+bsln_n_frames: 10          # baseline window in frames
+resp_n_frames: 10          # response window in frames
+
+bsln_sub_type: "trial_by_trial"  # 'trial_by_trial' or 'session_wide'
+
+# spatial extent of response
+n_dist_bins: 724           # number of distance bins (724 = diagonal of 512x512)
+
+# visualization parameters
+n_rows_fov: 4
+vlim: 200
+txt_shift: [7, 7]
+sat_perc_fov: 99.99
+peristim_wind: [10, 30]
+zoomin_npix: 128
+
+dist_bins_xlim: 362        # 724 // 2
+dist_bins_xlim_zoom: 45    # 724 // 16
