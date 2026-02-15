@@ -3,7 +3,6 @@ import os
 import tifffile as tiff
 import pandas as pd
 
-
 from suite2p.registration import register
 
 def get_all_fov_image(subject_path, session_type='_a', session_reg_idx=0,run_motcorr=True, fov_imsize=(1024, 1024), nimg_init=128, force_recompute=False):

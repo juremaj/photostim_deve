@@ -11,6 +11,7 @@ from scipy.interpolate import interp1d
 # USE THIS TO DEBUG: warnings.filterwarnings('error')
 def get_fov_resp(all_tiff_paths, all_frame, bsln_n_frames=10, resp_n_frames=10, fov_shape=(512, 512)):
     """
+    IMPORTANT!!! THIS FUNCTION IS DEPRECATED (replace with the function in photostim_deve.image_analysis.compute)!!!
     Load the tiff files and extract the mean fluorescence in the baseline and response windows for each stimulation.
 
     Parameters:
