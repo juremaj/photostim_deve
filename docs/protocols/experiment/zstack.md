@@ -21,13 +21,13 @@ See `.../...` for associated notebook.
 8) Go to the acquisition part of the GUI and click on 'add ZSeries'
 9) Set the number of repetions based on the SNR (usually 8 or 16), this will be used for averaging in post-processing
 10) In the mouse/session directory create a subfolder where the convention is `####nm_1.5x` or `####nm_0.85x` where `####` is the wavelength of the imaging laser
-11) 
-12) Set the axquisition path to: `eeNNN/YYYY-MM-DD_z/####nm_1.5x` where `NNN` is the mouse index for experimenter `ee` (initials) for example `jm070/2026-02-24_z/1100nm_1.5x`
-13) Click 'run acquisition'
+11) Set the acquisition path to: `eeNNN/YYYY-MM-DD_z/####nm_1.5x` where `NNN` is the mouse index for experimenter `ee` (initials) for example `jm070/2026-02-24_z/1100nm_1.5x`
+12) Click 'run acquisition'
 
-## 3) Do near-infrared branding (NIRB)
-
-
-
-
-## 4) Acquire a 'post-branding' z-stack (using an ETL)
+## 3) Do near-infrared branding (NIRB) and acquire a 'post-branding' z-stack (using an ETL)
+1) Set up everything the same as you would if doing a photostim experiment (see [photostim.md > Target stim](https://github.com/juremaj/photostim_deve/blob/main/docs/protocols/experiment/photostim.md#2-target-stim) protocol). Especially make sure that the ETL is set to the correct position (-15 as of 24.2.2026, this is measured using the [z_align_psf.md] protocol (https://github.com/juremaj/photostim_deve/blob/main/docs/protocols/calibration_microscope/z_align_psf.md))
+2) First figure out parameters necessary to burn - draw a single 15um spiral and keep stimulating (for example for 1s) with gradually increasing the '1040nm' laser power until you see the desired branding effect (MarkPoints Run protocol). Make sure that the spiral is positioned somewhere near the corners of the FOC and in a part that is not black. Also make sure the spiral is moved slightly upon each stimulation to better see the effect. IMPORTANT: switch off the PMTs usign the physical switch on the PMT box during each stimulation epoch. If the max power is too low you can try increasing the stim duration.
+3) Once you have found the required paramters you can set the stimulation pattern, the best is to add a 'grid' of eqidistant spirals separated by for example 10 or 20 um and to position a row of such spirals along minimum 2 but ideally all 4 edges of the FOV.
+4) IMPORTANT: Turn off the PMT box using the physical switch and run the 'stimulation protocol'
+5) Using 'Live view' check if it worked.
+6) Acquire a 'post-branding' z-stack by following the same steps as described in step 2) above, the naming convention is the same as above just with the appendix of `_nirb`: in `eeNNN/YYYY-MM-DD_z/` make folder `####nm_1.5x_nirb` or `####nm_0.85x_nirb`
