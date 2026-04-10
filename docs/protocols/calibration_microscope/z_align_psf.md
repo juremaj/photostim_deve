@@ -17,7 +17,7 @@ To measure and document the imaging ('tunable') and stimulation ('1040nm') posit
 
 Measurement for imaging/'tunable' laser:
 1) Follow the normal microscope on procedure (wait at least 30 min for laser to stabilise if it was turned off before)
-2) Position the rhodamine slide under the microscope with the coated side facing down, making sure the slide is as perpendicular with respect to the objective as possible.
+2) Position the rhodamine slide under the microscope with the coated side facing up (you can determine this by looking at the coverslip from different angles or by sligthly rubbing it and feeling if it is texutred on the sides) - also make sure the slide is as perpendicular with respect to the objective as possible.
 3) Add a few drops of water and immerse the objective by moving down in Z
 4) To avoid confustion set the ETL (electro-tunable lens) to 0 in Prairie View.
 5) Find the exact focus either with widefield or even better directly with Prairie View. If the slide is not flat enough under the objective make sure to readjust it before proceeding (a mis-aligned slide will inflate the estimate of PSF, especially with a large FOV).
