@@ -1,5 +1,6 @@
 # exports for microscope (MarkPoints, selected cells in FOV etc.)
 /export
+features_3d_scatter.mp4
 
 #DS_Store
 .DS_Store
